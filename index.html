@@ -111,12 +111,15 @@
             margin: 5px 0;
             cursor: pointer;
         }
-        .games-icon {
+        .games-icon,
+        .payment-icon {
             font-size: 24px;
             cursor: pointer;
-            margin: 20px 0;
+            margin: 20px 5px;
+            display: inline-block;
         }
-        .games-list {
+        .games-list,
+        .payment-modal {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -133,6 +136,12 @@
         }
         .game:hover {
             color: yellow;
+        }
+        .barcode {
+            display: none;
+            margin-top: 15px;
+            width: 200px;
+            height: auto;
         }
     </style>
 </head>
@@ -159,9 +168,13 @@
     <div class="content">
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
+
+        <div class="games-icon" onclick="toggleGamesList()">🎮</div>
+        <div class="payment-icon" onclick="togglePaymentModal()">💰</div>
+        <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
+
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
-        <div class="games-icon" onclick="toggleGamesList()">🎮 Games</div>
         <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
@@ -209,6 +222,11 @@
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
             gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        }
+
+        function togglePaymentModal() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
         function copyToClipboard(username) {
