@@ -118,29 +118,30 @@
             margin: 20px 5px;
             display: inline-block;
         }
-        .payment-icon {
-            position: relative;
-            padding: 10px 15px;
-            border: 2px solid white;
+        .games-list,
+        .payment-modal {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
             border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+        }
+        .game {
+            margin: 5px 0;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
+        .game:hover {
+            color: yellow;
         }
         .barcode {
             display: none;
             margin-top: 15px;
             width: 200px;
             height: auto;
-        }
-        .games-list {
-            display: block;
-            margin: 20px 0;
-        }
-        .game {
-            margin: 5px 0;
-            cursor: pointer;
-            font-size: 18px;
         }
     </style>
 </head>
@@ -169,10 +170,10 @@
         <div class="name">Ibrahim Mustafa</div>
 
         <div class="games-icon" onclick="toggleGamesList()">🎮</div>
-        <div class="payment-icon" onclick="togglePaymentModal()">💰 Telda</div>
+        <div class="payment-icon" onclick="togglePaymentModal()">💰</div>
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
-        <div class="games-list">
+        <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
             <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
@@ -236,5 +237,6 @@
             });
         }
     </script>
+
 </body>
 </html>
