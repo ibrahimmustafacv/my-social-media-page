@@ -32,7 +32,11 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+        }
+        .name {
+            font-size: 24px;
+            margin: 10px 0;
         }
         .social-links a {
             display: block;
@@ -107,6 +111,29 @@
             margin: 5px 0;
             cursor: pointer;
         }
+        .games-icon {
+            font-size: 24px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        .games-list {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+        }
+        .game {
+            margin: 5px 0;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
+        .game:hover {
+            color: yellow;
+        }
     </style>
 </head>
 <body>
@@ -131,8 +158,15 @@
 
     <div class="content">
         <img src="image.png" alt="Profile Picture" class="profile-pic">
-        <h1>Ibrahim Mustafa</h1>
+        <div class="name">Ibrahim Mustafa</div>
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
+
+        <div class="games-icon" onclick="toggleGamesList()">🎮 Games</div>
+        <div class="games-list" id="games-list">
+            <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
+            <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
+            <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
+        </div>
 
         <div class="social-links">
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
@@ -144,8 +178,8 @@
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
-            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a> <!-- رابط قائمة الأغاني -->
-            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a> <!-- رابط السيرة الذاتية -->
+            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
+            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
         </div>
     </div>
 
@@ -170,6 +204,19 @@
         function disableNotifications() {
             alert("Notifications disabled!");
             toggleModal();
+        }
+
+        function toggleGamesList() {
+            const gamesList = document.getElementById('games-list');
+            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        }
+
+        function copyToClipboard(username) {
+            navigator.clipboard.writeText(username).then(() => {
+                alert(`Copied: ${username}`);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
         }
     </script>
 
