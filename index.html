@@ -32,11 +32,7 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .name {
-            font-size: 24px;
-            margin: 10px 0;
+            margin-bottom: 20px;
         }
         .social-links a {
             display: block;
@@ -111,37 +107,21 @@
             margin: 5px 0;
             cursor: pointer;
         }
-        .games-icon,
-        .payment-icon {
-            font-size: 24px;
+        .icon {
             cursor: pointer;
-            margin: 20px 5px;
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
             display: inline-block;
         }
-        .games-list,
-        .payment-modal {
-            display: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px auto;
-            width: 80%;
-            max-width: 300px;
-        }
-        .game {
-            margin: 5px 0;
-            cursor: pointer;
-            color: white;
-            transition: color 0.3s;
-        }
-        .game:hover {
-            color: yellow;
+        .icon img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.7; /* Transparent effect */
         }
         .barcode {
             display: none;
-            margin-top: 15px;
-            width: 200px;
-            height: auto;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -167,19 +147,8 @@
 
     <div class="content">
         <img src="image.png" alt="Profile Picture" class="profile-pic">
-        <div class="name">Ibrahim Mustafa</div>
-
-        <div class="games-icon" onclick="toggleGamesList()">🎮</div>
-        <div class="payment-icon" onclick="togglePaymentModal()">💰</div>
-        <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
-
+        <h1>Ibrahim Mustafa</h1>
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
-
-        <div class="games-list" id="games-list">
-            <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
-            <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
-            <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
-        </div>
 
         <div class="social-links">
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
@@ -191,8 +160,30 @@
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
-            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
-            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
+        </div>
+
+        <div>
+            <span class="icon" onclick="toggleGameList()">
+                <img src="game_icon.png" alt="Games Icon">
+            </span>
+            <span class="icon" onclick="togglePayment()">
+                <img src="payment_icon.png" alt="Payment Icon">
+            </span>
+        </div>
+        
+        <div id="game-list" style="display:none; margin-top: 20px;">
+            <h3>My Games</h3>
+            <ul>
+                <li><a href="https://www.epicgames.com/fortnite/en-US/home">Fortnite</a> - Username: ibrahim.memo7</li>
+                <li><a href="https://supercell.com/en/games/clashofclans/">Clash of Clans</a> - Username: ibrahim.memo</li>
+                <li><a href="https://www.chess.com/">Chess</a> - Username: ibrahim7memo</li>
+            </ul>
+        </div>
+
+        <div id="payment-info" style="display:none; margin-top: 20px;">
+            <h3>Payment Method</h3>
+            <p>Telda</p>
+            <img id="barcode" class="barcode" src="barcode.png" alt="Payment Barcode">
         </div>
     </div>
 
@@ -219,22 +210,21 @@
             toggleModal();
         }
 
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        function toggleGameList() {
+            const gameList = document.getElementById('game-list');
+            gameList.style.display = gameList.style.display === "none" ? "block" : "none";
         }
 
-        function togglePaymentModal() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
-        }
-
-        function copyToClipboard(username) {
-            navigator.clipboard.writeText(username).then(() => {
-                alert(`Copied: ${username}`);
-            }).catch(err => {
-                console.error('Could not copy text: ', err);
-            });
+        function togglePayment() {
+            const paymentInfo = document.getElementById('payment-info');
+            const barcode = document.getElementById('barcode');
+            if (paymentInfo.style.display === "none") {
+                paymentInfo.style.display = "block";
+                barcode.style.display = "block"; // Show barcode
+            } else {
+                paymentInfo.style.display = "none";
+                barcode.style.display = "none"; // Hide barcode
+            }
         }
     </script>
 
