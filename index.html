@@ -15,10 +15,11 @@
         }
         .video-background {
             position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%; 
-            min-height: 100%;
+            top: 0;
+            left: 0;
+            width: 100vw; 
+            height: 100vh;
+            object-fit: cover; /* تغطية الفيديو بالكامل */
             z-index: -1;
         }
         .content {
@@ -110,7 +111,7 @@
 </head>
 <body>
 
-    <video autoplay muted loop class="video-background">
+    <video autoplay muted loop class="video-background" playsinline>
         <source src="https://raw.githubusercontent.com/ibrahimmustafacv/my-social-media-page/main/video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
