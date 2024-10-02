@@ -172,8 +172,17 @@
         }
 
         function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
+            Notification.requestPermission().then(function(result) {
+                if (result === 'granted') {
+                    new Notification('Notifications enabled!', {
+                        body: 'You will receive updates.',
+                        icon: 'icon.png' // يمكنك وضع أي أيقونة تود استخدامها
+                    });
+                } else {
+                    alert("Notifications denied!");
+                }
+                toggleModal();
+            });
         }
 
         function disableNotifications() {
