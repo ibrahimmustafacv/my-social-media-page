@@ -144,21 +144,12 @@
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
+            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a> <!-- رابط قائمة الأغاني -->
+            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a> <!-- رابط السيرة الذاتية -->
         </div>
     </div>
 
     <script>
-        // تسجيل الـ Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('Service Worker registered with scope:', registration.scope);
-            }).catch(function(error) {
-                console.log('Service Worker registration failed:', error);
-            });
-        }
-
-        // كود لتفعيل أو إلغاء الإشعارات
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
@@ -172,17 +163,8 @@
         }
 
         function enableNotifications() {
-            Notification.requestPermission().then(function(result) {
-                if (result === 'granted') {
-                    new Notification('Notifications enabled!', {
-                        body: 'You will receive updates.',
-                        icon: 'icon.png' // يمكنك وضع أي أيقونة تود استخدامها
-                    });
-                } else {
-                    alert("Notifications denied!");
-                }
-                toggleModal();
-            });
+            alert("Notifications enabled!");
+            toggleModal();
         }
 
         function disableNotifications() {
