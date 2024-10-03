@@ -114,7 +114,8 @@
         .games-icon,
         .payment-icon,
         .applications-icon {
-            font-size: 50px; /* Adjusted for better visibility */
+            width: 100px; /* Changed to 100px */
+            height: 100px; /* Changed to 100px */
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
@@ -170,9 +171,9 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="games.png" alt="Games Icon" class="games-icon" style="width: 50px; height: 50px;">
-        <img src="money.png" alt="Money Icon" class="payment-icon" style="width: 50px; height: 50px;">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon" style="width: 50px; height: 50px;">
+        <img src="games.png" alt="Games Icon" class="games-icon">
+        <img src="money.png" alt="Money Icon" class="payment-icon">
+        <img src="Applications.png" alt="Applications Icon" class="applications-icon">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
@@ -226,19 +227,13 @@
             gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
         }
 
-        function togglePaymentModal() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
-        }
-
-        function copyToClipboard(username) {
-            navigator.clipboard.writeText(username).then(() => {
-                alert(`Copied: ${username}`);
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
             }).catch(err => {
-                console.error('Could not copy text: ', err);
+                console.error("Failed to copy: ", err);
             });
         }
     </script>
-
 </body>
 </html>
