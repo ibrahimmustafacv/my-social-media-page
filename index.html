@@ -173,8 +173,8 @@
         <div class="name">Ibrahim Mustafa</div>
 
         <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="money.png" alt="Money Icon" class="payment-icon">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon">
+        <img src="money.png" alt="Money Icon" class="payment-icon" onclick="togglePaymentModal()">
+        <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
@@ -226,6 +226,14 @@
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
             gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        }
+
+        function togglePaymentModal() {
+            alert("Payment Icon Clicked! Add payment functionality here.");
+        }
+
+        function toggleApplicationsModal() {
+            alert("Applications Icon Clicked! Add applications functionality here.");
         }
 
         function copyToClipboard(text) {
