@@ -124,8 +124,7 @@
         }
         .games-list,
         .payment-modal,
-        .movies-list,
-        .marvel-list {
+        .movies-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -197,68 +196,26 @@
 
         <div class="film-category" id="film-category">
             <div class="movies-list" id="movies-list">
-                <div class="movie" onclick="toggleMarvelList()">Marvel Movies</div>
+                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
                 <div class="movie" onclick="copyToClipboard('Films')">Films</div>
-                <div class="movie" onclick="toggleMoviesList()">Series</div>
+                <div class="movie" onclick="copyToClipboard('Series')">Series</div>
             </div>
-            <div class="marvel-list" id="marvel-list">
-                <div class="movie" onclick="copyToClipboard('Captain America: The First Avenger')">Captain America: The First Avenger</div>
-                <div class="movie" onclick="copyToClipboard('Captain Marvel')">Captain Marvel</div>
-                <div class="movie" onclick="copyToClipboard('Iron Man')">Iron Man</div>
-                <div class="movie" onclick="copyToClipboard('The Incredible Hulk')">The Incredible Hulk</div>
-                <div class="movie" onclick="copyToClipboard('Iron Man 2')">Iron Man 2</div>
-                <div class="movie" onclick="copyToClipboard('Thor')">Thor</div>
-                <div class="movie" onclick="copyToClipboard('The Avengers')">The Avengers</div>
-                <div class="movie" onclick="copyToClipboard('Daredevil (Series)')">Daredevil (Series) - ده احسن مسلسل مارفل بنسبالي</div>
-                <div class="movie" onclick="copyToClipboard('Iron Man 3')">Iron Man 3</div>
-                <div class="movie" onclick="copyToClipboard('Thor: Un Mundo Oscuro')">Thor: Un Mundo Oscuro</div>
-                <div class="movie" onclick="copyToClipboard('Captain America: The Winter Soldier')">Captain America: The Winter Soldier - احسن فيلم لي مارفل بانسبالي</div>
-                <div class="movie" onclick="copyToClipboard('The Guardians of the Galaxy')">The Guardians of the Galaxy</div>
-                <div class="movie" onclick="copyToClipboard('The Guardians of the Galaxy Vol. 2')">The Guardians of the Galaxy Vol. 2</div>
-                <div class="movie" onclick="copyToClipboard('Avengers: Age of Ultron')">Avengers: Age of Ultron</div>
-                <div class="movie" onclick="copyToClipboard('Ant-Man')">Ant-Man</div>
-                <div class="movie" onclick="copyToClipboard('Captain America: Civil War')">Captain America: Civil War</div>
-                <div class="movie" onclick="copyToClipboard('Spider-Man: Homecoming')">Spider-Man: Homecoming</div>
-                <div class="movie" onclick="copyToClipboard('Doctor Strange')">Doctor Strange</div>
-                <div class="movie" onclick="copyToClipboard('Black Widow')">Black Widow</div>
-                <div class="movie" onclick="copyToClipboard('Black Panther')">Black Panther</div>
-                <div class="movie" onclick="copyToClipboard('Thor: Ragnarok')">Thor: Ragnarok</div>
-                <div class="movie" onclick="copyToClipboard('Avengers: Infinity War')">Avengers: Infinity War</div>
-                <div class="movie" onclick="copyToClipboard('Ant-Man and The Wasp')">Ant-Man and The Wasp</div>
-                <div class="movie" onclick="copyToClipboard('Avengers: Endgame')">Avengers: Endgame</div>
-                <div class="movie" onclick="copyToClipboard('Loki (Series)')">Loki (Series)</div>
-                <div class="movie" onclick="copyToClipboard('The Falcon and the Winter Soldier (Series)')">The Falcon and the Winter Soldier (Series)</div>
-                <div class="movie" onclick="copyToClipboard('Shang-Chi and the Legend of the Ten Rings')">Shang-Chi and the Legend of the Ten Rings</div>
-                <div class="movie" onclick="copyToClipboard('Spider-Man: Far From Home')">Spider-Man: Far From Home</div>
-                <div class="movie" onclick="copyToClipboard('WandaVision')">WandaVision</div>
-                <div class="movie" onclick="copyToClipboard('Eternals')">Eternals</div>
-                <div class="movie" onclick="copyToClipboard('Hawkeye (Series)')">Hawkeye (Series)</div>
-                <div class="movie" onclick="copyToClipboard('Spider-Man: No Way Home')">Spider-Man: No Way Home</div>
-                <div class="movie" onclick="copyToClipboard('Moon Knight')">Moon Knight</div>
-                <div class="movie" onclick="copyToClipboard('Doctor Strange in the Multiverse of Madness')">Doctor Strange in the Multiverse of Madness</div>
-                <div class="movie" onclick="copyToClipboard('Ms. Marvel')">Ms. Marvel</div>
-                <div class="movie" onclick="copyToClipboard('Thor: Love and Thunder')">Thor: Love and Thunder</div>
-                <div class="movie" onclick="copyToClipboard('I Am Groot')">I Am Groot</div>
-                <div class="movie" onclick="copyToClipboard('She-Hulk: Attorney at Law')">She-Hulk: Attorney at Law</div>
-                <div class="movie" onclick="copyToClipboard('Werewolf by Night')">Werewolf by Night</div>
-                <div class="movie" onclick="copyToClipboard('Black Panther: Wakanda Forever')">Black Panther: Wakanda Forever</div>
-                <div class="movie" onclick="copyToClipboard('Ant-Man and The Wasp: Quantumania')">Ant-Man and The Wasp: Quantumania</div>
-                <div class="movie" onclick="copyToClipboard('What If...? Season 2')">What If...? Season 2</div>
-                <div class="movie" onclick="copyToClipboard('Secret Invasion')">Secret Invasion</div>
-                <div class="movie" onclick="copyToClipboard('Guardians of the Galaxy Volume 3')">Guardians of the Galaxy Volume 3</div>
-                <div class="movie" onclick="copyToClipboard('Echo')">Echo - انا واقف لاحد هنا</div>
-                <div class="movie" onclick="copyToClipboard('Loki Season 2')">Loki Season 2</div>
-                <div class="movie" onclick="copyToClipboard('The Marvels')">The Marvels</div>
-                <div class="movie" onclick="copyToClipboard('Ironheart')">Ironheart</div>
-                <div class="movie" onclick="copyToClipboard('X-Men \'97')">X-Men '97</div>
-                <div class="movie" onclick="copyToClipboard('Agatha: Coven of Chaos')">Agatha: Coven of Chaos</div>
-                <div class="movie" onclick="copyToClipboard('Daredevil: Born Again')">Daredevil: Born Again</div>
-                <div class="movie" onclick="copyToClipboard('Captain America: New World Order')">Captain America: New World Order</div>
-                <div class="movie" onclick="copyToClipboard('Thunderbolts')">Thunderbolts</div>
-                <div class="movie" onclick="copyToClipboard('Blade')">Blade</div>
-                <div class="movie" onclick="copyToClipboard('Deadpool 3')">Deadpool 3</div>
-                <div class="movie" onclick="copyToClipboard('لحد 2024 المرحلة الخامسة')">لحد 2024 المرحلة الخامسة</div>
-            </div>
+        </div>
+
+        <p>If you see beauty in me, know that there's beauty inside of you.</p>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
+            <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
+            <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
+            <a href="https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0">WhatsApp</a>
+            <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
+            <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
+            <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
+            <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
+            <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
+            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
+            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
         </div>
     </div>
 
@@ -266,12 +223,12 @@
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === "block") {
-                modal.style.display = "none";
-                overlay.style.display = "none";
-            } else {
+            if (modal.style.display === "none" || modal.style.display === "") {
                 modal.style.display = "block";
                 overlay.style.display = "block";
+            } else {
+                modal.style.display = "none";
+                overlay.style.display = "none";
             }
         }
 
@@ -281,38 +238,37 @@
         }
 
         function disableNotifications() {
-            alert("Notifications disabled!");
+            alert("Notifications disabled.");
             toggleModal();
         }
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
+            toggleMoviesList();
         }
 
-        function toggleMarvelList() {
-            const marvelList = document.getElementById('marvel-list');
-            marvelList.style.display = marvelList.style.display === "block" ? "none" : "block";
+        function toggleMoviesList() {
+            const moviesList = document.getElementById('movies-list');
+            moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text)
-                .then(() => {
-                    alert("Copied: " + text);
-                })
-                .catch(err => {
-                    alert("Error copying text: " + err);
-                });
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`Copied: ${text}`);
+            }, (err) => {
+                console.error('Error copying text: ', err);
+            });
         }
     </script>
 </body>
