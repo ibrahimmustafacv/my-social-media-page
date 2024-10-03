@@ -115,15 +115,16 @@
         .payment-icon,
         .applications-icon,
         .movie-icon {
-            width: 70px; /* Increased size to 70px */
-            height: 70px; /* Increased size to 70px */
+            width: 70px;
+            height: 70px;
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
-            filter: brightness(0) invert(1); /* Change color to white */
+            filter: brightness(0) invert(1);
         }
         .games-list,
-        .payment-modal {
+        .payment-modal,
+        .movies-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -132,13 +133,15 @@
             width: 80%;
             max-width: 300px;
         }
-        .game {
+        .game,
+        .movie {
             margin: 5px 0;
             cursor: pointer;
             color: white;
             transition: color 0.3s;
         }
-        .game:hover {
+        .game:hover,
+        .movie:hover {
             color: yellow;
         }
         .barcode {
@@ -146,6 +149,12 @@
             margin-top: 15px;
             width: 200px;
             height: auto;
+        }
+        .film-category {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -176,13 +185,21 @@
         <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
         <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
         <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleMoviesList()"> <!-- إضافة هذه السطر -->
+        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
             <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
+        </div>
+
+        <div class="film-category" id="film-category">
+            <div class="movies-list" id="movies-list">
+                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
+                <div class="movie" onclick="copyToClipboard('Films')">Films</div>
+                <div class="movie" onclick="copyToClipboard('Series')">Series</div>
+            </div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -221,7 +238,7 @@
         }
 
         function disableNotifications() {
-            alert("Notifications disabled!");
+            alert("Notifications disabled.");
             toggleModal();
         }
 
@@ -235,17 +252,22 @@
             barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
         }
 
-        function toggleApplicationsModal() {
-            alert("Applications modal opened!");
+        function toggleFilmCategories() {
+            const filmCategory = document.getElementById('film-category');
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
+            toggleMoviesList();
         }
 
         function toggleMoviesList() {
-            alert("Movies list opened!");
+            const moviesList = document.getElementById('movies-list');
+            moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard: " + text);
+                alert(`Copied: ${text}`);
+            }, (err) => {
+                console.error('Error copying text: ', err);
             });
         }
     </script>
