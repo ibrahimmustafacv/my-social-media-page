@@ -113,8 +113,7 @@
         }
         .games-icon,
         .payment-icon,
-        .applications-icon,
-        .movies-icon {
+        .applications-icon {
             width: 70px; /* Increased size to 70px */
             height: 70px; /* Increased size to 70px */
             cursor: pointer;
@@ -123,8 +122,7 @@
             filter: brightness(0) invert(1); /* Change color to white */
         }
         .games-list,
-        .payment-modal,
-        .movies-list {
+        .payment-modal {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -133,15 +131,13 @@
             width: 80%;
             max-width: 300px;
         }
-        .game,
-        .movie {
+        .game {
             margin: 5px 0;
             cursor: pointer;
             color: white;
             transition: color 0.3s;
         }
-        .game:hover,
-        .movie:hover {
+        .game:hover {
             color: yellow;
         }
         .barcode {
@@ -179,19 +175,12 @@
         <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
         <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
         <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
-        <img src="movie.png" alt="Movies Icon" class="movies-icon" onclick="toggleMoviesList()">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
             <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
-        </div>
-
-        <div class="movies-list" id="movies-list">
-            <div class="movie" onclick="alert('Marvel Movies List')">Marvel</div>
-            <div class="movie" onclick="alert('Films List')">Films</div>
-            <div class="movie" onclick="alert('Series List')">Series</div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -245,19 +234,14 @@
         }
 
         function toggleApplicationsModal() {
-            alert("Applications modal opened!");
-        }
-
-        function toggleMoviesList() {
-            const moviesList = document.getElementById('movies-list');
-            moviesList.style.display = moviesList.style.display === "block" ? "none" : "block";
+            alert("Applications Icon Clicked! Add applications functionality here.");
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert("Copied to clipboard: " + text);
-            }, function(err) {
-                console.error("Could not copy text: ", err);
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
             });
         }
     </script>
