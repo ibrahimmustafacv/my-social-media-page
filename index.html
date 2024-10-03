@@ -114,7 +114,7 @@
         .games-icon,
         .payment-icon,
         .applications-icon,
-        .movie-icon { /* إضافة الكلاس الجديد */
+        .movie-icon { /* إضافة هذه السطر */
             width: 70px; /* Increased size to 70px */
             height: 70px; /* Increased size to 70px */
             cursor: pointer;
@@ -176,7 +176,7 @@
         <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
         <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
         <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="showMovieModal()"> <!-- إضافة الأيقونة الجديدة -->
+        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleMoviesList()"> <!-- إضافة هذه السطر -->
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
@@ -236,17 +236,16 @@
         }
 
         function toggleApplicationsModal() {
-            // يمكنك إضافة وظيفة لتشغيل / إيقاف عرض نماذج التطبيقات هنا
+            alert("Applications modal opened!");
         }
 
-        function showMovieModal() {
-            // يمكنك إضافة وظيفة لعرض محتوى أو معلومات الفيلم هنا
-            alert("Opening movie section!");
+        function toggleMoviesList() {
+            alert("Movies list opened!");
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
+                alert("Copied to clipboard: " + text);
             });
         }
     </script>
