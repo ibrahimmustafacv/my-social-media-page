@@ -241,9 +241,9 @@
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
         <div class="social-links">
-            <a href="#" onclick="showPasswordModal(event)">WhatsApp</a>
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
+            <a href="#" onclick="showPasswordModal(event)">WhatsApp</a>
             <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
             <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
             <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
@@ -289,6 +289,35 @@
             } else {
                 error.style.display = 'block';
             }
+        }
+
+        function toggleGamesList() {
+            const list = document.getElementById('games-list');
+            list.style.display = list.style.display === 'none' || list.style.display === '' ? 'block' : 'none';
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === 'none' || barcode.style.display === '' ? 'block' : 'none';
+        }
+
+        function toggleApplicationsModal() {
+            // Functionality to show or hide applications modal
+        }
+
+        function toggleFilmCategories() {
+            const categories = document.getElementById('film-category');
+            categories.style.display = categories.style.display === 'none' || categories.style.display === '' ? 'flex' : 'none';
+        }
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied: ' + text);
         }
     </script>
 
