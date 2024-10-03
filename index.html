@@ -114,12 +114,12 @@
         .games-icon,
         .payment-icon,
         .applications-icon {
-            width: 50px; /* حجم الأيقونات */
-            height: 50px; /* حجم الأيقونات */
+            width: 50px; /* Changed to 50px for emoji size */
+            height: 50px; /* Changed to 50px for emoji size */
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
-            filter: invert(1); /* تغيير الأيقونات إلى اللون الأبيض */
+            filter: brightness(0) invert(1); /* Change color to white */
         }
         .games-list,
         .payment-modal {
@@ -172,7 +172,7 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="games.png" alt="Games Icon" class="games-icon">
+        <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
         <img src="money.png" alt="Money Icon" class="payment-icon">
         <img src="Applications.png" alt="Applications Icon" class="applications-icon">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
