@@ -114,8 +114,7 @@
         .games-icon,
         .payment-icon,
         .applications-icon {
-            width: 50px; /* تعديل حجم الأيقونات */
-            height: 50px; /* تعديل حجم الأيقونات */
+            font-size: 50px; /* Adjusted for better visibility */
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
@@ -171,10 +170,9 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="icons/games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="icons/money.png" alt="Payment Icon" class="payment-icon" onclick="togglePaymentModal()">
-        <img src="icons/applications.png" alt="Applications Icon" class="applications-icon">
-
+        <img src="games.png" alt="Games Icon" class="games-icon" style="width: 50px; height: 50px;">
+        <img src="money.png" alt="Money Icon" class="payment-icon" style="width: 50px; height: 50px;">
+        <img src="Applications.png" alt="Applications Icon" class="applications-icon" style="width: 50px; height: 50px;">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="games-list" id="games-list">
@@ -233,11 +231,14 @@
             barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied: " + text);
+        function copyToClipboard(username) {
+            navigator.clipboard.writeText(username).then(() => {
+                alert(`Copied: ${username}`);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
             });
         }
     </script>
+
 </body>
 </html>
