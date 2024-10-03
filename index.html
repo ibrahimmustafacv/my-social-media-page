@@ -58,73 +58,7 @@
             background-color: white;
             color: black;
         }
-        .menu-button {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            border-radius: 50%;
-            padding: 10px;
-            z-index: 2;
-        }
-        .notification-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            z-index: 3;
-        }
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 2;
-        }
-        .close-button {
-            cursor: pointer;
-            color: white;
-            margin-top: 10px;
-        }
-        .notification-options {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .notification-options button {
-            background-color: white;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 5px 0;
-            cursor: pointer;
-        }
-        .games-icon,
-        .payment-icon,
-        .applications-icon,
-        .movie-icon {
-            width: 70px;
-            height: 70px;
-            cursor: pointer;
-            margin: 20px 5px;
-            display: inline-block;
-            filter: brightness(0) invert(1);
-        }
-        .games-list,
-        .payment-modal,
-        .movies-list {
+        .games-list, .movies-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -133,22 +67,14 @@
             width: 80%;
             max-width: 300px;
         }
-        .game,
         .movie {
             margin: 5px 0;
             cursor: pointer;
             color: white;
             transition: color 0.3s;
         }
-        .game:hover,
         .movie:hover {
             color: yellow;
-        }
-        .barcode {
-            display: none;
-            margin-top: 15px;
-            width: 200px;
-            height: auto;
         }
         .film-category {
             display: none;
@@ -165,41 +91,16 @@
         Your browser does not support the video tag.
     </video>
 
-    <button class="menu-button" onclick="toggleModal()">⋮</button>
-
-    <div class="modal-overlay" id="modal-overlay" onclick="toggleModal()"></div>
-    <div class="notification-modal" id="notification-modal">
-        <h2>Enable Notifications</h2>
-        <p>Would you like to enable notifications for updates?</p>
-        <div class="notification-options">
-            <button onclick="enableNotifications()">Yes</button>
-            <button onclick="disableNotifications()">No</button>
-            <button class="close-button" onclick="toggleModal()">Close</button>
-        </div>
-    </div>
-
     <div class="content">
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
-        <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
+        <p class="movie" onclick="toggleMoviesList()">Marvel Movies</p>
 
-        <div class="games-list" id="games-list">
-            <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
-            <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
-            <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
-        </div>
-
-        <div class="film-category" id="film-category">
-            <div class="movies-list" id="movies-list">
-                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
-                <div class="movie" onclick="copyToClipboard('Films')">Films</div>
-                <div class="movie" onclick="copyToClipboard('Series')">Series</div>
-            </div>
+        <div class="movies-list" id="movies-list">
+            <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
+            <div class="movie" onclick="copyToClipboard('Films')">Films</div>
+            <div class="movie" onclick="copyToClipboard('Series')">Series</div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -220,44 +121,6 @@
     </div>
 
     <script>
-        function toggleModal() {
-            const modal = document.getElementById('notification-modal');
-            const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === "none" || modal.style.display === "") {
-                modal.style.display = "block";
-                overlay.style.display = "block";
-            } else {
-                modal.style.display = "none";
-                overlay.style.display = "none";
-            }
-        }
-
-        function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
-        }
-
-        function disableNotifications() {
-            alert("Notifications disabled.");
-            toggleModal();
-        }
-
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
-        }
-
-        function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
-            toggleMoviesList();
-        }
-
         function toggleMoviesList() {
             const moviesList = document.getElementById('movies-list');
             moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
