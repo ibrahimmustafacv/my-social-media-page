@@ -124,7 +124,8 @@
         }
         .games-list,
         .payment-modal,
-        .movies-list {
+        .movies-list,
+        .film-category {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -133,14 +134,12 @@
             width: 80%;
             max-width: 300px;
         }
-        .game,
         .movie {
             margin: 5px 0;
             cursor: pointer;
             color: white;
             transition: color 0.3s;
         }
-        .game:hover,
         .movie:hover {
             color: yellow;
         }
@@ -149,12 +148,6 @@
             margin-top: 15px;
             width: 200px;
             height: auto;
-        }
-        .film-category {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px 0;
         }
     </style>
 </head>
@@ -195,11 +188,9 @@
         </div>
 
         <div class="film-category" id="film-category">
-            <div class="movies-list" id="movies-list">
-                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
-                <div class="movie" onclick="copyToClipboard('Films')">Films</div>
-                <div class="movie" onclick="copyToClipboard('Series')">Series</div>
-            </div>
+            <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
+            <div class="movie" onclick="copyToClipboard('Film')">Film</div>
+            <div class="movie" onclick="copyToClipboard('Series')">Series</div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -278,9 +269,8 @@
         // Initial setup to hide lists and modals
         document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('games-list').style.display = "none";
-            document.getElementById('movies-list').style.display = "none";
-            document.getElementById('payment-barcode').style.display = "none";
             document.getElementById('film-category').style.display = "none";
+            document.getElementById('payment-barcode').style.display = "none";
             document.getElementById('notification-modal').style.display = "none";
             document.getElementById('modal-overlay').style.display = "none";
         });
