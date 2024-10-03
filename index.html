@@ -244,38 +244,46 @@
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" ? "block" : "none";
-        }
-
-        function toggleApplicationsModal() {
-            const applicationsModal = document.getElementById('applications-modal');
-            applicationsModal.style.display = applicationsModal.style.display === "none" ? "block" : "none";
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" ? "flex" : "none";
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            alert("Copied: " + text);
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" ? "block" : "none";
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+        }
+
+        function toggleApplicationsModal() {
+            // You can implement the applications modal logic here
+            alert("Applications modal toggled!");
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
+            });
         }
 
         function requestPassword() {
-            const password = prompt("Please enter the password:");
-            if (password === "48522844") {
-                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
-            } else {
-                alert("Incorrect password.");
+            const password = prompt("Please enter your password:");
+            if (password) {
+                alert("Password: " + password);
             }
         }
-    </script>
 
+        // Initial setup to hide lists and modals
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.getElementById('games-list').style.display = "none";
+            document.getElementById('movies-list').style.display = "none";
+            document.getElementById('payment-barcode').style.display = "none";
+            document.getElementById('film-category').style.display = "none";
+            document.getElementById('notification-modal').style.display = "none";
+            document.getElementById('modal-overlay').style.display = "none";
+        });
+    </script>
 </body>
 </html>
