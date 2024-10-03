@@ -189,8 +189,8 @@
 
         <div class="film-category" id="film-category">
             <div class="movie" onclick="openLink('https://drive.google.com/file/d/1Xo9wCrC9_CZ3SdWHQuJ6Gwii0u4kqfJp/view?usp=sharing')">Marvel Movies</div>
+            <div class="movie" onclick="openLink('https://drive.google.com/file/d/1mP3jtkK9VqmjXteCqNjA3SVtrDnibwBX/view?usp=sharing')">Series</div>
             <div class="movie" onclick="copyToClipboard('Film')">Film</div>
-            <div class="movie" onclick="copyToClipboard('Series')">Series</div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -249,7 +249,6 @@
         }
 
         function toggleApplicationsModal() {
-            // You can implement the applications modal logic here
             alert("Applications modal toggled!");
         }
 
@@ -270,7 +269,6 @@
             window.open(url, '_blank');
         }
 
-        // Initial setup to hide lists and modals
         document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById('games-list').style.display = "none";
             document.getElementById('film-category').style.display = "none";
