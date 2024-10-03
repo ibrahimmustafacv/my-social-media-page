@@ -114,12 +114,11 @@
         .games-icon,
         .payment-icon,
         .applications-icon {
-            font-size: 50px; /* تعديل حجم الأيقونات */
+            width: 50px; /* تعديل حجم الأيقونات */
+            height: 50px; /* تعديل حجم الأيقونات */
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
-            width: 50px; /* تعديل حجم الأيقونات */
-            height: 50px; /* تعديل حجم الأيقونات */
         }
         .games-list,
         .payment-modal {
@@ -234,14 +233,11 @@
             barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
-        function copyToClipboard(username) {
-            navigator.clipboard.writeText(username).then(() => {
-                alert(`Copied: ${username}`);
-            }).catch(err => {
-                console.error('Could not copy text: ', err);
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied: " + text);
             });
         }
     </script>
-
 </body>
 </html>
