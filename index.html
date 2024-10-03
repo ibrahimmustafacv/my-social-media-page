@@ -156,6 +156,40 @@
             align-items: center;
             margin: 10px 0;
         }
+        .password-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            z-index: 4;
+        }
+        .password-input {
+            background-color: white;
+            border: 2px solid #555;
+            color: black;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+        }
+        .password-submit {
+            background-color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .password-error {
+            color: red;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -205,71 +239,50 @@
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
         <div class="social-links">
+            <a href="#" onclick="showPasswordModal(event)">WhatsApp</a>
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
             <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
-            <a href="https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0">WhatsApp</a>
             <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
             <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
-            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
-            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
+        </div>
+
+        <div class="password-modal" id="password-modal">
+            <input type="password" id="password-input" class="password-input" placeholder="Enter Password">
+            <button class="password-submit" onclick="checkPassword()">Submit</button>
+            <p class="password-error" id="password-error">Incorrect password, please try again.</p>
         </div>
     </div>
 
     <script>
+        const correctPassword = 'yourpassword'; // Set your correct password here
+
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === "none" || modal.style.display === "") {
-                modal.style.display = "block";
-                overlay.style.display = "block";
+            modal.style.display = modal.style.display === 'none' || modal.style.display === '' ? 'block' : 'none';
+            overlay.style.display = overlay.style.display === 'none' || overlay.style.display === '' ? 'block' : 'none';
+        }
+
+        function showPasswordModal(event) {
+            event.preventDefault();
+            const modal = document.getElementById('password-modal');
+            modal.style.display = 'block';
+        }
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const error = document.getElementById('password-error');
+            if (input === correctPassword) {
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
             } else {
-                modal.style.display = "none";
-                overlay.style.display = "none";
+                error.style.display = 'block';
             }
         }
-
-        function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
-        }
-
-        function disableNotifications() {
-            alert("Notifications disabled.");
-            toggleModal();
-        }
-
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
-        }
-
-        function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
-            toggleMoviesList();
-        }
-
-        function toggleMoviesList() {
-            const moviesList = document.getElementById('movies-list');
-            moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
-            }, (err) => {
-                console.error('Error copying text: ', err);
-            });
-        }
     </script>
+
 </body>
 </html>
