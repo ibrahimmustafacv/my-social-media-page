@@ -154,56 +154,31 @@
             display: none;
             flex-direction: column;
             align-items: center;
-            margin: 10px 0;
+            margin-top: 15px;
+        }
+        .marvel-list {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .marvel-list h3 {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-
-    <video autoplay muted loop class="video-background" playsinline>
+    <video class="video-background" autoplay loop muted>
         <source src="video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
-
-    <button class="menu-button" onclick="toggleModal()">⋮</button>
-
-    <div class="modal-overlay" id="modal-overlay" onclick="toggleModal()"></div>
-    <div class="notification-modal" id="notification-modal">
-        <h2>Enable Notifications</h2>
-        <p>Would you like to enable notifications for updates?</p>
-        <div class="notification-options">
-            <button onclick="enableNotifications()">Yes</button>
-            <button onclick="disableNotifications()">No</button>
-            <button class="close-button" onclick="toggleModal()">Close</button>
-        </div>
-    </div>
-
     <div class="content">
-        <img src="image.png" alt="Profile Picture" class="profile-pic">
+        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
-
-        <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsModal()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
-        <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
-
-        <div class="games-list" id="games-list">
-            <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
-            <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
-            <div class="game" onclick="copyToClipboard('ibrahim7memo')">Chess - ibrahim7memo</div>
-        </div>
-
-        <div class="film-category" id="film-category">
-            <div class="movies-list" id="movies-list">
-                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
-                <div class="movie" onclick="copyToClipboard('Films')">Films</div>
-                <div class="movie" onclick="copyToClipboard('Series')">Series</div>
-            </div>
-        </div>
-
-        <p>If you see beauty in me, know that there's beauty inside of you.</p>
-
         <div class="social-links">
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
@@ -214,61 +189,102 @@
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
-            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
-            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
+        </div>
+        <button class="menu-button" onclick="toggleMarvelList()">Marvel</button>
+        <div class="marvel-list" id="marvel-list">
+            <h3>Marvel List:</h3>
+            <ol>
+                <li>Captain America: The First Avenger</li>
+                <li>Captain Marvel</li>
+                <li>Iron Man</li>
+                <li>The Incredible Hulk</li>
+                <li>Iron Man 2</li>
+                <li>Thor</li>
+                <li>The Avengers</li>
+                <li>Daredevil (series)</li>
+                <li>Iron Man 3</li>
+                <li>Thor: The Dark World</li>
+                <li>Captain America: The Winter Soldier</li>
+                <li>The Guardians of the Galaxy</li>
+                <li>The Guardians of the Galaxy Vol. 2</li>
+                <li>Avengers: Age of Ultron</li>
+                <li>Ant-Man</li>
+                <li>Captain America: Civil War</li>
+                <li>Spider-Man: Homecoming</li>
+                <li>Doctor Strange</li>
+                <li>Black Widow</li>
+                <li>Black Panther</li>
+                <li>Thor: Ragnarok</li>
+                <li>Avengers: Infinity War</li>
+                <li>Ant-Man and The Wasp</li>
+                <li>Avengers: Endgame</li>
+                <li>Loki (series)</li>
+                <li>The Falcon and the Winter Soldier (series)</li>
+                <li>Shang-Chi and the Legend of the Ten Rings</li>
+                <li>Spider-Man: Far From Home</li>
+                <li>WandaVision</li>
+                <li>Eternals</li>
+                <li>Hawkeye (series)</li>
+                <li>Spider-Man: No Way Home</li>
+                <li>Moon Knight</li>
+                <li>Doctor Strange in the Multiverse of Madness</li>
+                <li>Ms. Marvel</li>
+                <li>Thor: Love and Thunder</li>
+                <li>I Am Groot</li>
+                <li>She-Hulk: Attorney at Law</li>
+                <li>Werewolf by Night</li>
+                <li>Black Panther: Wakanda Forever</li>
+                <li>Ant-Man and The Wasp: Quantumania</li>
+                <li>What If...? Season 2</li>
+                <li>Secret Invasion</li>
+                <li>Guardians of the Galaxy Volume 3</li>
+                <li>Echo</li>
+                <li>Loki Season 2</li>
+                <li>The Marvels</li>
+                <li>Ironheart</li>
+                <li>X-Men '97</li>
+                <li>Agatha: Coven of Chaos</li>
+                <li>Daredevil: Born Again</li>
+            </ol>
         </div>
     </div>
-
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()"></div>
+    <div class="notification-modal" id="notification-modal">
+        <div class="notification-options">
+            <h3>Select an Option:</h3>
+            <button onclick="showBarcode()">Show Barcode</button>
+            <button onclick="showMoviesList()">Show Movies List</button>
+            <button onclick="showGamesList()">Show Games List</button>
+            <span class="close-button" onclick="closeModal()">Close</span>
+        </div>
+    </div>
     <script>
-        function toggleModal() {
-            const modal = document.getElementById('notification-modal');
-            const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === "none" || modal.style.display === "") {
-                modal.style.display = "block";
-                overlay.style.display = "block";
+        function toggleMarvelList() {
+            const marvelList = document.getElementById("marvel-list");
+            if (marvelList.style.display === "none" || marvelList.style.display === "") {
+                marvelList.style.display = "block";
             } else {
-                modal.style.display = "none";
-                overlay.style.display = "none";
+                marvelList.style.display = "none";
             }
         }
-
-        function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
+        function showModal() {
+            document.getElementById("modal-overlay").style.display = "block";
+            document.getElementById("notification-modal").style.display = "block";
         }
-
-        function disableNotifications() {
-            alert("Notifications disabled.");
-            toggleModal();
+        function closeModal() {
+            document.getElementById("modal-overlay").style.display = "none";
+            document.getElementById("notification-modal").style.display = "none";
         }
-
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
-        }
-
         function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+            document.querySelector(".barcode").style.display = "block";
         }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
-            toggleMoviesList();
+        function showMoviesList() {
+            const moviesList = document.querySelector(".movies-list");
+            moviesList.style.display = "block";
         }
-
-        function toggleMoviesList() {
-            const moviesList = document.getElementById('movies-list');
-            moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
-            }, (err) => {
-                console.error('Error copying text: ', err);
-            });
+        function showGamesList() {
+            const gamesList = document.querySelector(".games-list");
+            gamesList.style.display = "block";
         }
     </script>
 </body>
