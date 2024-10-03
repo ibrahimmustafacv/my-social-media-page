@@ -71,7 +71,7 @@
             padding: 10px;
             z-index: 2;
         }
-        .notification-modal {
+        .notification-modal, .marvel-modal {
             display: none;
             position: fixed;
             top: 50%;
@@ -156,6 +156,12 @@
             align-items: center;
             margin: 10px 0;
         }
+        .marvel-movie {
+            margin: 5px 0;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -196,80 +202,107 @@
 
         <div class="film-category" id="film-category">
             <div class="movies-list" id="movies-list">
-                <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
+                <div class="movie" onclick="showMarvelMovies()">Marvel Movies</div>
                 <div class="movie" onclick="copyToClipboard('Films')">Films</div>
                 <div class="movie" onclick="copyToClipboard('Series')">Series</div>
             </div>
         </div>
 
-        <p>If you see beauty in me, know that there's beauty inside of you.</p>
-
-        <div class="social-links">
-            <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
-            <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
-            <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
-            <a href="https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0">WhatsApp</a>
-            <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
-            <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
-            <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
-            <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
-            <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
-            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
-            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
+        <div class="marvel-modal" id="marvel-modal">
+            <h2>Marvel Movies</h2>
+            <div id="marvel-movies-list">
+                <div class="marvel-movie">1: Captain America: The First Avenger</div>
+                <div class="marvel-movie">2: Captain Marvel</div>
+                <div class="marvel-movie">3: Iron Man</div>
+                <div class="marvel-movie">4: The Incredible Hulk</div>
+                <div class="marvel-movie">5: Iron Man 2</div>
+                <div class="marvel-movie">6: Thor</div>
+                <div class="marvel-movie">7: The Avengers</div>
+                <div class="marvel-movie">8: Daredevil (Series)</div>
+                <div class="marvel-movie">9: Iron Man 3</div>
+                <div class="marvel-movie">10: Thor: The Dark World</div>
+                <div class="marvel-movie">11: Captain America: The Winter Soldier</div>
+                <div class="marvel-movie">12: Guardians of the Galaxy</div>
+                <div class="marvel-movie">13: Guardians of the Galaxy Vol. 2</div>
+                <div class="marvel-movie">14: Avengers: Age of Ultron</div>
+                <div class="marvel-movie">15: Ant-Man</div>
+                <div class="marvel-movie">16: Captain America: Civil War</div>
+                <div class="marvel-movie">17: Spider-Man: Homecoming</div>
+                <div class="marvel-movie">18: Doctor Strange</div>
+                <div class="marvel-movie">19: Black Widow</div>
+                <div class="marvel-movie">20: Black Panther</div>
+                <div class="marvel-movie">21: Thor: Ragnarok</div>
+                <div class="marvel-movie">22: Ant-Man and The Wasp</div>
+                <div class="marvel-movie">23: Captain Marvel</div>
+                <div class="marvel-movie">24: Spider-Man: Far From Home</div>
+                <div class="marvel-movie">25: Avengers: Endgame</div>
+                <div class="marvel-movie">26: Spider-Man: No Way Home</div>
+                <div class="marvel-movie">27: Black Panther: Wakanda Forever</div>
+            </div>
+            <button class="close-button" onclick="closeMarvelModal()">Close</button>
         </div>
+
     </div>
 
     <script>
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === "none" || modal.style.display === "") {
-                modal.style.display = "block";
-                overlay.style.display = "block";
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
             } else {
-                modal.style.display = "none";
-                overlay.style.display = "none";
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
             }
         }
 
         function enableNotifications() {
-            alert("Notifications enabled!");
+            alert('Notifications enabled!');
             toggleModal();
         }
 
         function disableNotifications() {
-            alert("Notifications disabled.");
+            alert('Notifications disabled!');
             toggleModal();
         }
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+            barcode.style.display = barcode.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleApplicationsModal() {
+            // Functionality for the applications modal
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "flex" : "none";
-            toggleMoviesList();
+            filmCategory.style.display = filmCategory.style.display === 'block' ? 'none' : 'block';
+            document.getElementById('movies-list').style.display = 'block';
         }
 
-        function toggleMoviesList() {
-            const moviesList = document.getElementById('movies-list');
-            moviesList.style.display = moviesList.style.display === "none" || moviesList.style.display === "" ? "block" : "none";
+        function showMarvelMovies() {
+            const marvelModal = document.getElementById('marvel-modal');
+            marvelModal.style.display = 'block';
+        }
+
+        function closeMarvelModal() {
+            const marvelModal = document.getElementById('marvel-modal');
+            marvelModal.style.display = 'none';
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
-            }, (err) => {
-                console.error('Error copying text: ', err);
+                alert(`Copied to clipboard: ${text}`);
             });
         }
     </script>
+
 </body>
 </html>
