@@ -114,7 +114,7 @@
         .games-icon,
         .payment-icon,
         .applications-icon,
-        .movie-icon { /* إضافة هذه السطر */
+        .movie-icon {
             width: 70px; /* Increased size to 70px */
             height: 70px; /* Increased size to 70px */
             cursor: pointer;
@@ -227,12 +227,12 @@
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
         }
 
         function toggleApplicationsModal() {
