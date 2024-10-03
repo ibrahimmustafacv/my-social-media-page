@@ -111,18 +111,15 @@
             margin: 5px 0;
             cursor: pointer;
         }
-        .games-icon,
-        .payment-icon,
-        .applications-icon {
+        .icon {
             font-size: 24px;
             cursor: pointer;
             margin: 20px 5px;
             display: inline-block;
-            width: 100px; /* تعديل حجم الأيقونات */
-            height: 100px; /* تعديل حجم الأيقونات */
         }
         .games-list,
-        .payment-modal {
+        .payment-modal,
+        .applications-modal {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -172,12 +169,20 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="icons/games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="icons/money.png" alt="Payment Icon" class="payment-icon" onclick="togglePaymentModal()">
-        <img src="icons/applications.png" alt="Applications Icon" class="applications-icon">
-
+        <!-- Icons Section -->
+        <div class="icon" onclick="toggleGamesList()">
+            <img src="games.png" alt="Games Icon" width="50" height="50">
+        </div>
+        <div class="icon" onclick="togglePaymentModal()">
+            <img src="money.png" alt="Payment Icon" width="50" height="50">
+        </div>
+        <div class="icon" onclick="toggleApplicationsModal()">
+            <img src="Applications.png" alt="Applications Icon" width="50" height="50">
+        </div>
+        
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
+        <!-- Games List -->
         <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
@@ -186,6 +191,7 @@
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
+        <!-- Social Links -->
         <div class="social-links">
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
@@ -234,11 +240,15 @@
             barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
+        function toggleApplicationsModal() {
+            alert("Applications modal clicked");
+        }
+
         function copyToClipboard(username) {
             navigator.clipboard.writeText(username).then(() => {
                 alert(`Copied: ${username}`);
             }).catch(err => {
-                console.error('Could not copy text: ', err);
+                alert('Error copying to clipboard');
             });
         }
     </script>
