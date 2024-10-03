@@ -188,7 +188,7 @@
         </div>
 
         <div class="film-category" id="film-category">
-            <div class="movie" onclick="copyToClipboard('Marvel')">Marvel Movies</div>
+            <div class="movie" onclick="openLink('https://drive.google.com/file/d/1Xo9wCrC9_CZ3SdWHQuJ6Gwii0u4kqfJp/view?usp=sharing')">Marvel Movies</div>
             <div class="movie" onclick="copyToClipboard('Film')">Film</div>
             <div class="movie" onclick="copyToClipboard('Series')">Series</div>
         </div>
@@ -264,6 +264,10 @@
             if (password) {
                 alert("Password: " + password);
             }
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
         // Initial setup to hide lists and modals
