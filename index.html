@@ -178,13 +178,15 @@
             display: block;
             width: 100%;
         }
-        .password-submit {
+        .password-submit,
+        .password-close {
             background-color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
         .password-error {
             color: red;
@@ -253,12 +255,13 @@
         <div class="password-modal" id="password-modal">
             <input type="password" id="password-input" class="password-input" placeholder="Enter Password">
             <button class="password-submit" onclick="checkPassword()">Submit</button>
+            <button class="password-close" onclick="closePasswordModal()">Close</button>
             <p class="password-error" id="password-error">Incorrect password, please try again.</p>
         </div>
     </div>
 
     <script>
-        const correctPassword = 'yourpassword'; // Set your correct password here
+        const correctPassword = '48522844'; // Set your correct password here
 
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
@@ -271,6 +274,11 @@
             event.preventDefault();
             const modal = document.getElementById('password-modal');
             modal.style.display = 'block';
+        }
+
+        function closePasswordModal() {
+            const modal = document.getElementById('password-modal');
+            modal.style.display = 'none';
         }
 
         function checkPassword() {
