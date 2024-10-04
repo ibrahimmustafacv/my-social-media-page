@@ -224,51 +224,54 @@
         }
 
         function enableNotifications() {
-            alert("Notifications enabled!");
+            alert('Notifications enabled!');
             toggleModal();
         }
 
         function disableNotifications() {
-            alert("Notifications disabled!");
+            alert('Notifications disabled!');
             toggleModal();
+        }
+
+        function requestPassword() {
+            let password = prompt("Please enter the password:");
+            if (password === "123456") {
+                // Open WhatsApp link directly
+                window.open("https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0", "_blank");
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
         }
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+            gamesList.style.display = (gamesList.style.display === "none" || gamesList.style.display === "") ? "block" : "none";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
         }
 
         function toggleApplicationsModal() {
-            // Implement your applications modal logic here if needed
+            // Add your logic to toggle applications modal here
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
+            filmCategory.style.display = (filmCategory.style.display === "none" || filmCategory.style.display === "") ? "block" : "none";
         }
 
         function openLink(url) {
-            window.open(url, '_blank');
+            window.open(url, "_blank");
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard: " + text);
+                alert('Copied to clipboard: ' + text);
+            }, () => {
+                alert('Failed to copy text.');
             });
-        }
-
-        function requestPassword() {
-            const password = prompt("Please enter the password:");
-            if (password === "48522844") {  // أدخل كلمة السر الخاصة بك هنا
-                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
-            } else {
-                alert("Incorrect password.");
-            }
         }
     </script>
 </body>
