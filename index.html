@@ -224,7 +224,7 @@
         }
 
         function enableNotifications() {
-            alert("Notifications enabled!");
+            alert("Notifications enabled.");
             toggleModal();
         }
 
@@ -260,7 +260,8 @@
             const enteredPassword = prompt('Please enter the password:');
             const correctPassword = '48522844';
             if (enteredPassword === correctPassword) {
-                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+                // Attempt to open WhatsApp without a popup
+                window.location = 'whatsapp://send?phone=201027714970&text=Hello';
             } else {
                 alert('Incorrect password!');
             }
