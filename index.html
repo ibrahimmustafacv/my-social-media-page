@@ -223,10 +223,62 @@
             }
         }
 
+        function requestPassword() {
+            const password = prompt('Please enter the password:');
+            const correctPassword = 'password123'; // هنا ضع كلمة المرور الخاصة بك
+
+            if (password === correctPassword) {
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            } else {
+                alert('Incorrect password!');
+            }
+        }
+
+        function toggleGamesList() {
+            const list = document.getElementById('games-list');
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block";
+            } else {
+                list.style.display = "none";
+            }
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            if (barcode.style.display === "none" || barcode.style.display === "") {
+                barcode.style.display = "block";
+            } else {
+                barcode.style.display = "none";
+            }
+        }
+
+        function toggleFilmCategories() {
+            const category = document.getElementById('film-category');
+            if (category.style.display === "none" || category.style.display === "") {
+                category.style.display = "block";
+            } else {
+                category.style.display = "none";
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Game ID copied: ' + text);
+            });
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+
         function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
+            alert('Notifications enabled!');
         }
 
         function disableNotifications() {
-            alert("Notifications disabled
+            alert('Notifications disabled!');
+        }
+    </script>
+
+</body>
+</html>
