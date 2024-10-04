@@ -223,23 +223,22 @@
             }
         }
 
-        function requestPassword() {
-            const password = prompt('Please enter the password:');
-            const correctPassword = 'password123'; // هنا ضع كلمة المرور الخاصة بك
+        function enableNotifications() {
+            alert("Notifications enabled!");
+            toggleModal();
+        }
 
-            if (password === correctPassword) {
-                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
-            } else {
-                alert('Incorrect password!');
-            }
+        function disableNotifications() {
+            alert("Notifications disabled!");
+            toggleModal();
         }
 
         function toggleGamesList() {
-            const list = document.getElementById('games-list');
-            if (list.style.display === "none" || list.style.display === "") {
-                list.style.display = "block";
+            const gamesList = document.getElementById('games-list');
+            if (gamesList.style.display === "none" || gamesList.style.display === "") {
+                gamesList.style.display = "block";
             } else {
-                list.style.display = "none";
+                gamesList.style.display = "none";
             }
         }
 
@@ -253,17 +252,17 @@
         }
 
         function toggleFilmCategories() {
-            const category = document.getElementById('film-category');
-            if (category.style.display === "none" || category.style.display === "") {
-                category.style.display = "block";
+            const filmCategory = document.getElementById('film-category');
+            if (filmCategory.style.display === "none" || filmCategory.style.display === "") {
+                filmCategory.style.display = "block";
             } else {
-                category.style.display = "none";
+                filmCategory.style.display = "none";
             }
         }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(function() {
-                alert('Game ID copied: ' + text);
+                alert('Copied to clipboard: ' + text);
             });
         }
 
@@ -271,12 +270,14 @@
             window.open(url, '_blank');
         }
 
-        function enableNotifications() {
-            alert('Notifications enabled!');
-        }
-
-        function disableNotifications() {
-            alert('Notifications disabled!');
+        function requestPassword() {
+            const userPassword = prompt("Please enter your password:");
+            const correctPassword = '48522844'; // كلمة المرور الخاصة بك
+            if (userPassword === correctPassword) {
+                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0', '_blank');
+            } else {
+                alert("Incorrect password!");
+            }
         }
     </script>
 
