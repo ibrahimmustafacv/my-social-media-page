@@ -153,7 +153,7 @@
 </head>
 <body>
 
-    <video autoplay muted loop class="video-background" playsinline preload="auto">
+    <video autoplay muted loop class="video-background" playsinline>
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -229,7 +229,7 @@
         }
 
         function disableNotifications() {
-            alert("Notifications disabled.");
+            alert("Notifications disabled!");
             toggleModal();
         }
 
@@ -243,30 +243,33 @@
             barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
+        function toggleApplicationsModal() {
+            // Implement your applications modal logic here if needed
+        }
+
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
             filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
-            });
         }
 
         function openLink(url) {
             window.open(url, '_blank');
         }
 
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard: " + text);
+            });
+        }
+
         function requestPassword() {
-            const password = prompt("Please enter the password for WhatsApp:");
-            if (password === "48522844") {
-                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0');
+            const password = prompt("Please enter the password:");
+            if (password === "48522844") {  // أدخل كلمة السر الخاصة بك هنا
+                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
             } else {
                 alert("Incorrect password.");
             }
         }
     </script>
-
 </body>
 </html>
