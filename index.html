@@ -223,52 +223,64 @@
             }
         }
 
-        function enableNotifications() {
-            alert("Notifications enabled!");
-            toggleModal();
-        }
-
-        function disableNotifications() {
-            alert("Notifications disabled!");
-            toggleModal();
-        }
-
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+            if (gamesList.style.display === "none" || gamesList.style.display === "") {
+                gamesList.style.display = "block";
+            } else {
+                gamesList.style.display = "none";
+            }
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+            if (barcode.style.display === "none" || barcode.style.display === "") {
+                barcode.style.display = "block";
+            } else {
+                barcode.style.display = "none";
+            }
         }
 
         function toggleApplicationsModal() {
-            // Implement your applications modal logic here if needed
+            // Implement the logic to toggle applications modal if needed
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
+            if (filmCategory.style.display === "none" || filmCategory.style.display === "") {
+                filmCategory.style.display = "block";
+            } else {
+                filmCategory.style.display = "none";
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert("Copied to clipboard: " + text);
         }
 
         function openLink(url) {
             window.open(url, '_blank');
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard: " + text);
-            });
+        function requestPassword() {
+            const enteredPassword = prompt('Please enter the password:');
+            const correctPassword = 'IbMemo7';
+            if (enteredPassword === correctPassword) {
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            } else {
+                alert('Incorrect password!');
+            }
         }
 
-        function requestPassword() {
-            const password = prompt("Please enter the password:");
-            if (password === "48522844") {  // أدخل كلمة السر الخاصة بك هنا
-                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
-            } else {
-                alert("Incorrect password.");
-            }
+        function enableNotifications() {
+            alert('Notifications enabled.');
+            toggleModal();
+        }
+
+        function disableNotifications() {
+            alert('Notifications disabled.');
+            toggleModal();
         }
     </script>
 </body>
