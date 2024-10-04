@@ -235,47 +235,41 @@
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
+            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
         }
 
         function toggleApplicationsModal() {
-            alert("Applications modal toggled!");
+            // Implement your applications modal logic here if needed
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied: " + text);
-            });
-        }
-
-        function requestPassword() {
-            const password = prompt("Please enter your password:");
-            if (password) {
-                alert("Password: " + password);
-            }
+        function toggleFilmCategories() {
+            const filmCategory = document.getElementById('film-category');
+            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
         }
 
         function openLink(url) {
             window.open(url, '_blank');
         }
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.getElementById('games-list').style.display = "none";
-            document.getElementById('film-category').style.display = "none";
-            document.getElementById('payment-barcode').style.display = "none";
-            document.getElementById('notification-modal').style.display = "none";
-            document.getElementById('modal-overlay').style.display = "none";
-        });
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard: " + text);
+            });
+        }
+
+        function requestPassword() {
+            const password = prompt("Please enter the password:");
+            if (password === "123456") {  // أدخل كلمة السر الخاصة بك هنا
+                window.open("https://api.whatsapp.com/send/?phone=48522844&text&type=phone_number&app_absent=0", '_blank');
+            } else {
+                alert("Incorrect password.");
+            }
+        }
     </script>
 </body>
 </html>
