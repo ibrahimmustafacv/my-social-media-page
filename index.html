@@ -153,7 +153,6 @@
 </head>
 <body>
 
-    <!-- Video with preload attribute -->
     <video autoplay muted loop class="video-background" playsinline preload="auto">
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -206,38 +205,26 @@
             <a href="https://www.threads.net/@ibrahimmusttafa">Threads</a>
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/@ibrahimmusttafa">Telegram</a>
+            <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
+            <a href="https://drive.google.com/file/d/1P8N_hDvVezltS2_CqgPg6k3MJCc4dtLI/view?usp=sharing">CV</a>
         </div>
     </div>
 
     <script>
         function toggleModal() {
-            const modal = document.getElementById("notification-modal");
-            const overlay = document.getElementById("modal-overlay");
-            modal.style.display = modal.style.display === "block" ? "none" : "block";
-            overlay.style.display = overlay.style.display === "block" ? "none" : "block";
-        }
-
-        function showBarcode() {
-            const barcode = document.getElementById("payment-barcode");
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
-        }
-
-        function toggleGamesList() {
-            const gamesList = document.getElementById("games-list");
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
-        }
-
-        function toggleApplicationsModal() {
-            alert("No applications found.");
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById("film-category");
-            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
+            const modal = document.getElementById('notification-modal');
+            const overlay = document.getElementById('modal-overlay');
+            if (modal.style.display === "none" || modal.style.display === "") {
+                modal.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                modal.style.display = "none";
+                overlay.style.display = "none";
+            }
         }
 
         function enableNotifications() {
-            alert("Notifications enabled.");
+            alert("Notifications enabled!");
             toggleModal();
         }
 
@@ -246,30 +233,40 @@
             toggleModal();
         }
 
-        function openLink(link) {
-            window.open(link, '_blank');
+        function toggleGamesList() {
+            const gamesList = document.getElementById('games-list');
+            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleFilmCategories() {
+            const filmCategory = document.getElementById('film-category');
+            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
         }
 
         function copyToClipboard(text) {
-            const tempInput = document.createElement("input");
-            tempInput.style.position = "absolute";
-            tempInput.style.left = "-9999px";
-            document.body.appendChild(tempInput);
-            tempInput.value = text;
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("Copied to clipboard: " + text);
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`Copied: ${text}`);
+            });
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
         function requestPassword() {
-            const password = prompt("Enter the password to access WhatsApp:");
-            if (password === "YOUR_PASSWORD") {
-                window.open("https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0", '_blank');
+            const password = prompt("Please enter the password for WhatsApp:");
+            if (password === "YOUR_PASSWORD_HERE") {
+                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0');
             } else {
                 alert("Incorrect password.");
             }
         }
     </script>
+
 </body>
 </html>
