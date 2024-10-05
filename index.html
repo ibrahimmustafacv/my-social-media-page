@@ -233,53 +233,50 @@
             toggleModal();
         }
 
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            if (gamesList.style.display === "none" || gamesList.style.display === "") {
-                gamesList.style.display = "block";
-            } else {
-                gamesList.style.display = "none";
-            }
-        }
-
-        function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            if (barcode.style.display === "none" || barcode.style.display === "") {
-                barcode.style.display = "block";
-            } else {
-                barcode.style.display = "none";
-            }
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            if (filmCategory.style.display === "none" || filmCategory.style.display === "") {
-                filmCategory.style.display = "block";
-            } else {
-                filmCategory.style.display = "none";
-            }
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Copied to clipboard: ' + text);
-            });
-        }
-
-        function openLink(url) {
-            window.open(url, '_blank');
-        }
-
         function requestPassword() {
             const userPassword = prompt("Please enter your password:");
             const correctPassword = '48522844'; // كلمة المرور الخاصة بك
             if (userPassword === correctPassword) {
-                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0', '_blank');
+                // استخدم window.location.href بدلاً من window.open
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
             } else {
                 alert("Incorrect password!");
             }
         }
-    </script>
 
+        function toggleGamesList() {
+            const gamesList = document.getElementById('games-list');
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+        }
+
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert("Copied to clipboard: " + text);
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+        }
+
+        function toggleApplicationsModal() {
+            // هنا يمكنك إضافة كود لفتح تطبيقات معينة
+            alert("Applications modal is not implemented yet.");
+        }
+
+        function toggleFilmCategories() {
+            const filmCategory = document.getElementById('film-category');
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
+        }
+
+        function openLink(url) {
+            window.location.href = url;
+        }
+    </script>
 </body>
 </html>
