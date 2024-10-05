@@ -125,7 +125,8 @@
         .games-list,
         .payment-modal,
         .movies-list,
-        .film-category {
+        .film-category,
+        .applications-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -220,9 +221,13 @@
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
-            const isVisible = modal.style.display === 'block';
-            modal.style.display = isVisible ? 'none' : 'block';
-            overlay.style.display = isVisible ? 'none' : 'block';
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+            } else {
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+            }
         }
 
         function enableNotifications() {
@@ -231,13 +236,14 @@
         }
 
         function disableNotifications() {
-            alert('Notifications disabled.');
+            alert('Notifications disabled!');
             toggleModal();
         }
 
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied: ' + text);
+            });
         }
 
         function showBarcode() {
@@ -245,19 +251,9 @@
             barcode.style.display = barcode.style.display === 'block' ? 'none' : 'block';
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert(`Copied: ${text}`);
-            });
-        }
-
-        function openLink(url) {
-            window.open(url, '_blank');
-        }
-
-        function toggleApplicationsModal() {
-            const applicationsList = document.getElementById('applications-list');
-            applicationsList.style.display = applicationsList.style.display === 'block' ? 'none' : 'block';
+        function toggleGamesList() {
+            const gamesList = document.getElementById('games-list');
+            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
         }
 
         function toggleFilmCategories() {
@@ -265,15 +261,25 @@
             filmCategory.style.display = filmCategory.style.display === 'block' ? 'none' : 'block';
         }
 
+        function toggleApplicationsModal() {
+            const applicationsList = document.getElementById('applications-list');
+            applicationsList.style.display = applicationsList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+
         function requestPassword() {
             const password = prompt('Please enter your password:');
-            if (password) {
-                alert(`You entered: ${password}`);
+            const correctPassword = 'your_password'; // استبدل 'your_password' بكلمة السر الخاصة بك
+            if (password === correctPassword) {
+                alert('Access granted!');
+                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0', '_blank');
             } else {
-                alert('No password entered.');
+                alert('Incorrect password. Please try again.');
             }
         }
     </script>
-
 </body>
 </html>
