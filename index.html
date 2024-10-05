@@ -125,8 +125,7 @@
         .games-list,
         .payment-modal,
         .movies-list,
-        .film-category,
-        .applications-list {
+        .film-category {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -194,12 +193,6 @@
             <div class="movie" onclick="openLink('https://drive.google.com/file/d/1cJlnnFxIbp1tHaVHOYPeOQ5tj9PixLCJ/view?usp=sharing')">Film</div>
         </div>
 
-        <div class="applications-list" id="applications-list">
-            <div class="application" onclick="openLink('https://example.com/windows')">Windows Application</div>
-            <div class="application" onclick="openLink('https://example.com/android')">Android Application</div>
-            <div class="application" onclick="openLink('https://example.com/courses')">Courses</div>
-        </div>
-
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
         <div class="social-links">
@@ -221,64 +214,68 @@
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-                overlay.style.display = 'none';
+            if (modal.style.display === "none" || modal.style.display === "") {
+                modal.style.display = "block";
+                overlay.style.display = "block";
             } else {
-                modal.style.display = 'block';
-                overlay.style.display = 'block';
+                modal.style.display = "none";
+                overlay.style.display = "none";
             }
         }
 
         function enableNotifications() {
-            alert('Notifications enabled!');
+            alert("Notifications enabled!");
             toggleModal();
         }
 
         function disableNotifications() {
-            alert('Notifications disabled!');
+            alert("Notifications disabled!");
             toggleModal();
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied: ' + text);
-            });
-        }
-
-        function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === 'block' ? 'none' : 'block';
+        function requestPassword() {
+            const userPassword = prompt("Please enter your password:");
+            const correctPassword = '48522844'; // كلمة المرور الخاصة بك
+            if (userPassword === correctPassword) {
+                // استخدم window.location.href بدلاً من window.open
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            } else {
+                alert("Incorrect password!");
+            }
         }
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+        }
+
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert("Copied to clipboard: " + text);
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+        }
+
+        function toggleApplicationsModal() {
+            // هنا يمكنك إضافة كود لفتح تطبيقات معينة
+            alert("Applications modal is not implemented yet.");
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function toggleApplicationsModal() {
-            const applicationsList = document.getElementById('applications-list');
-            applicationsList.style.display = applicationsList.style.display === 'block' ? 'none' : 'block';
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
         }
 
         function openLink(url) {
-            window.open(url, '_blank');
-        }
-
-        function requestPassword() {
-            const password = prompt('Please enter your password:');
-            const correctPassword = '48522844'; // كلمة السر الخاصة بك
-            if (password === correctPassword) {
-                alert('Access granted!');
-                window.open('https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0', '_blank');
-            } else {
-                alert('Incorrect password. Please try again.');
-            }
+            window.location.href = url;
         }
     </script>
 </body>
