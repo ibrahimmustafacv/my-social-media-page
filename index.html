@@ -196,9 +196,9 @@
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
         <div class="social-links">
+            <a href="#" onclick="requestWhatsAppPassword()">WhatsApp</a>
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
-            <a href="#" onclick="requestPassword()">WhatsApp</a>
             <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
             <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
             <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
@@ -223,58 +223,52 @@
             }
         }
 
+        function enableNotifications() {
+            alert("Notifications enabled.");
+            toggleModal();
+        }
+
+        function disableNotifications() {
+            alert("Notifications disabled.");
+            toggleModal();
+        }
+
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = (gamesList.style.display === "none" || gamesList.style.display === "") ? "block" : "none";
+            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = (barcode.style.display === "none" || barcode.style.display === "") ? "block" : "none";
+            barcode.style.display = 'block';
+        }
+
+        function toggleApplicationsModal() {
+            alert("Applications modal is not implemented yet.");
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = (filmCategory.style.display === "none" || filmCategory.style.display === "") ? "block" : "none";
+            filmCategory.style.display = filmCategory.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+            alert("Copied: " + text);
         }
 
         function openLink(url) {
             window.open(url, '_blank');
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            alert(`Copied: ${text}`);
-        }
-
-        function enableNotifications() {
-            alert('Notifications enabled!');
-            toggleModal();
-        }
-
-        function disableNotifications() {
-            alert('Notifications disabled.');
-            toggleModal();
-        }
-
-        function requestPassword() {
-            const password = "48522844";
-            alert(`WhatsApp Password: ${password}`);
-        }
-
-        window.addEventListener('scroll', function() {
-            const video = document.querySelector('video');
-            if (!video.playing && window.scrollY > 50) {
-                video.play();
+        function requestWhatsAppPassword() {
+            const password = prompt("Please enter the password:");
+            if (password === "48522844") {
+                window.open("https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0", "_blank");
+            } else {
+                alert("Incorrect password. Please try again.");
             }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('video');
-            video.play().catch(() => {
-                console.log('Autoplay failed, playing on scroll.');
-            });
-        });
+        }
     </script>
 </body>
 </html>
