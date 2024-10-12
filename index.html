@@ -153,7 +153,7 @@
 </head>
 <body>
 
-    <video autoplay muted loop class="video-background" playsinline id="background-video">
+    <video autoplay muted loop class="video-background" playsinline>
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -223,38 +223,19 @@
             }
         }
 
-        function enableNotifications() {
-            alert("Notifications Enabled!");
-            toggleModal();
-        }
-
-        function disableNotifications() {
-            alert("Notifications Disabled!");
-            toggleModal();
-        }
-
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+            gamesList.style.display = (gamesList.style.display === "none" || gamesList.style.display === "") ? "block" : "none";
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+            barcode.style.display = (barcode.style.display === "none" || barcode.style.display === "") ? "block" : "none";
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
-        }
-
-        function requestPassword() {
-            const password = prompt("Please enter the password to access WhatsApp:");
-            if (password === "ibrahim123") {
-                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
-            } else {
-                alert("Incorrect password!");
-            }
+            filmCategory.style.display = (filmCategory.style.display === "none" || filmCategory.style.display === "") ? "block" : "none";
         }
 
         function openLink(url) {
@@ -262,21 +243,38 @@
         }
 
         function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                alert("Copied to clipboard!");
-            }, function(err) {
-                alert("Failed to copy: ", err);
-            });
+            navigator.clipboard.writeText(text);
+            alert(`Copied: ${text}`);
         }
 
-        // This function ensures the video plays on scroll for iOS devices
+        function enableNotifications() {
+            alert('Notifications enabled!');
+            toggleModal();
+        }
+
+        function disableNotifications() {
+            alert('Notifications disabled.');
+            toggleModal();
+        }
+
+        function requestPassword() {
+            const password = "48522844";
+            alert(`WhatsApp Password: ${password}`);
+        }
+
         window.addEventListener('scroll', function() {
-            var video = document.getElementById('background-video');
-            if (video.paused) {
+            const video = document.querySelector('video');
+            if (!video.playing && window.scrollY > 50) {
                 video.play();
             }
         });
-    </script>
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            video.play().catch(() => {
+                console.log('Autoplay failed, playing on scroll.');
+            });
+        });
+    </script>
 </body>
 </html>
