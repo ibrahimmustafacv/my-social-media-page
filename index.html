@@ -153,7 +153,7 @@
 </head>
 <body>
 
-    <video autoplay muted loop class="video-background" playsinline>
+    <video autoplay muted loop class="video-background" playsinline id="background-video">
         <source src="video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -224,59 +224,59 @@
         }
 
         function enableNotifications() {
-            alert("Notifications enabled!");
+            alert("Notifications Enabled!");
             toggleModal();
         }
 
         function disableNotifications() {
-            alert("Notifications disabled!");
+            alert("Notifications Disabled!");
             toggleModal();
         }
 
+        function toggleGamesList() {
+            const gamesList = document.getElementById('games-list');
+            gamesList.style.display = gamesList.style.display === "block" ? "none" : "block";
+        }
+
+        function showBarcode() {
+            const barcode = document.getElementById('payment-barcode');
+            barcode.style.display = barcode.style.display === "block" ? "none" : "block";
+        }
+
+        function toggleFilmCategories() {
+            const filmCategory = document.getElementById('film-category');
+            filmCategory.style.display = filmCategory.style.display === "block" ? "none" : "block";
+        }
+
         function requestPassword() {
-            const userPassword = prompt("Please enter your password:");
-            const correctPassword = '48522844'; // كلمة المرور الخاصة بك
-            if (userPassword === correctPassword) {
-                // استخدم window.location.href بدلاً من window.open
-                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            const password = prompt("Please enter the password to access WhatsApp:");
+            if (password === "ibrahim123") {
+                window.location.href = "https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0";
             } else {
                 alert("Incorrect password!");
             }
         }
 
-        function toggleGamesList() {
-            const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
         function copyToClipboard(text) {
-            const tempInput = document.createElement('input');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            alert("Copied to clipboard: " + text);
+            navigator.clipboard.writeText(text).then(function() {
+                alert("Copied to clipboard!");
+            }, function(err) {
+                alert("Failed to copy: ", err);
+            });
         }
 
-        function showBarcode() {
-            const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
-        }
-
-        function toggleApplicationsModal() {
-            // هنا يمكنك إضافة كود لفتح تطبيقات معينة
-            alert("Applications modal is not implemented yet.");
-        }
-
-        function toggleFilmCategories() {
-            const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
-        }
-
-        function openLink(url) {
-            window.location.href = url;
-        }
+        // This function ensures the video plays on scroll for iOS devices
+        window.addEventListener('scroll', function() {
+            var video = document.getElementById('background-video');
+            if (video.paused) {
+                video.play();
+            }
+        });
     </script>
+
 </body>
 </html>
