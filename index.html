@@ -196,9 +196,9 @@
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
 
         <div class="social-links">
-            <a href="#" onclick="requestWhatsAppPassword()">WhatsApp</a>
             <a href="https://www.instagram.com/ibrahimmusttafa/">Instagram</a>
             <a href="https://www.facebook.com/ibrahimmustaafa">Facebook</a>
+            <a href="#" onclick="requestPassword()">WhatsApp</a>
             <a href="https://x.com/ibrahimmustaafa">X (Twitter)</a>
             <a href="https://www.linkedin.com/in/ibrahim-mustafa-685bab308/">LinkedIn</a>
             <a href="https://www.snapchat.com/add/ibrahim.ma3">Snapchat</a>
@@ -224,50 +224,58 @@
         }
 
         function enableNotifications() {
-            alert("Notifications enabled.");
+            alert("Notifications enabled!");
             toggleModal();
         }
 
         function disableNotifications() {
-            alert("Notifications disabled.");
+            alert("Notifications disabled!");
             toggleModal();
+        }
+
+        function requestPassword() {
+            const userPassword = prompt("Please enter your password:");
+            const correctPassword = '48522844'; // كلمة المرور الخاصة بك
+            if (userPassword === correctPassword) {
+                // استخدم window.location.href بدلاً من window.open
+                window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            } else {
+                alert("Incorrect password!");
+            }
         }
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === 'block' ? 'none' : 'block';
+            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+        }
+
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert("Copied to clipboard: " + text);
         }
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = 'block';
+            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
         }
 
         function toggleApplicationsModal() {
+            // هنا يمكنك إضافة كود لفتح تطبيقات معينة
             alert("Applications modal is not implemented yet.");
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
-            alert("Copied: " + text);
+            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
         }
 
         function openLink(url) {
-            window.open(url, '_blank');
-        }
-
-        function requestWhatsAppPassword() {
-            const password = prompt("Please enter the password:");
-            if (password === "48522844") {
-                window.open("https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0", "_blank");
-            } else {
-                alert("Incorrect password. Please try again.");
-            }
+            window.location.href = url;
         }
     </script>
 </body>
