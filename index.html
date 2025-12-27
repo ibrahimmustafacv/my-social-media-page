@@ -125,7 +125,8 @@
         .games-list,
         .payment-modal,
         .movies-list,
-        .film-category {
+        .film-category,
+        .vodafone-section {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -149,7 +150,24 @@
             width: 200px;
             height: auto;
         }
-        /* Applications menu styles */
+        .vodafone-section {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 300px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .vodafone-section:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .vodafone-section div {
+            color: white;
+            font-weight: bold;
+        }
         .applications-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
@@ -205,6 +223,10 @@
         <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
+        <div class="vodafone-section" id="vodafone-section" onclick="callVodafoneCash()">
+            <div>Vodafone Cash</div>
+        </div>
+
         <div class="games-list" id="games-list">
             <div class="game" onclick="copyToClipboard('ibrahim.memo7')">Fortnite - ibrahim.memo7</div>
             <div class="game" onclick="copyToClipboard('ibrahim.memo')">Clash of Clans - ibrahim.memo</div>
@@ -213,6 +235,7 @@
 
         <div class="applications-list" id="applications-list">
             <a href="https://ibrahimmustafacv.github.io/" target="_blank" class="application-item">My works</a>
+            <a href="https://ibrahimmustafacv.github.io/Microsoft-Office/" target="_blank" class="application-item">Data analysis</a>
         </div>
 
         <div class="film-category" id="film-category">
@@ -263,9 +286,8 @@
 
         function requestPassword() {
             const userPassword = prompt("Please enter your password:");
-            const correctPassword = '48522844'; // كلمة المرور الخاصة بك
+            const correctPassword = '48522844';
             if (userPassword === correctPassword) {
-                // استخدم window.location.href بدلاً من window.open
                 window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
             } else {
                 alert("Incorrect password!");
@@ -289,7 +311,15 @@
 
         function showBarcode() {
             const barcode = document.getElementById('payment-barcode');
-            barcode.style.display = barcode.style.display === "none" || barcode.style.display === "" ? "block" : "none";
+            const vodafoneSection = document.getElementById('vodafone-section');
+            
+            if (barcode.style.display === "none" || barcode.style.display === "") {
+                barcode.style.display = "block";
+                vodafoneSection.style.display = "block";
+            } else {
+                barcode.style.display = "none";
+                vodafoneSection.style.display = "none";
+            }
         }
 
         function toggleApplicationsList() {
@@ -306,7 +336,12 @@
             window.location.href = url;
         }
 
-
+        function callVodafoneCash() {
+            const phoneNumber = '01097958385';
+            if (confirm(`هل تريد الاتصال برقم Vodafone Cash: ${phoneNumber}؟`)) {
+                window.location.href = `tel:${phoneNumber}`;
+            }
+        }
     </script>
 </body>
 </html>
