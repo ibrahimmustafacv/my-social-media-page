@@ -37,6 +37,12 @@
         .name {
             font-size: 24px;
             margin: 10px 0;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            transition: text-shadow 0.3s;
+        }
+        .name:hover {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 0.7);
         }
         .social-links a {
             display: block;
@@ -51,12 +57,17 @@
             margin-left: auto;
             margin-right: auto;
             max-width: 400px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .social-links a:hover,
         .social-links a:active {
             background-color: white;
             color: black;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
         }
         .menu-button {
             position: absolute;
@@ -70,6 +81,11 @@
             border-radius: 50%;
             padding: 10px;
             z-index: 2;
+            transition: all 0.3s;
+        }
+        .menu-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
         }
         .notification-modal {
             display: none;
@@ -77,10 +93,12 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.9);
             border-radius: 15px;
             padding: 20px;
             z-index: 3;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
         }
         .modal-overlay {
             display: none;
@@ -89,13 +107,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 2;
+            backdrop-filter: blur(3px);
         }
         .close-button {
             cursor: pointer;
             color: white;
             margin-top: 10px;
+            padding: 5px 15px;
+            border: 1px solid white;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .close-button:hover {
+            background-color: white;
+            color: black;
         }
         .notification-options {
             display: flex;
@@ -110,6 +138,12 @@
             border-radius: 5px;
             margin: 5px 0;
             cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        .notification-options button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
         }
         .games-icon,
         .payment-icon,
@@ -121,6 +155,15 @@
             margin: 20px 5px;
             display: inline-block;
             filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .games-icon:hover,
+        .payment-icon:hover,
+        .applications-icon:hover,
+        .movie-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
         }
         .games-list,
         .payment-modal,
@@ -134,21 +177,32 @@
             margin: 10px auto;
             width: 80%;
             max-width: 300px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.3s ease;
         }
         .movie {
             margin: 5px 0;
             cursor: pointer;
             color: white;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 5px;
         }
         .movie:hover {
             color: yellow;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px yellow;
         }
         .barcode {
             display: none;
             margin-top: 15px;
             width: 200px;
             height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            animation: fadeIn 0.5s ease;
         }
         .vodafone-section {
             display: none;
@@ -159,14 +213,23 @@
             width: 80%;
             max-width: 300px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .vodafone-section:hover {
             background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
         .vodafone-section div {
             color: white;
             font-weight: bold;
+            transition: all 0.3s;
+        }
+        .vodafone-section:hover div {
+            color: #ffeb3b;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
         }
         .applications-list {
             display: none;
@@ -176,12 +239,15 @@
             margin: 10px auto;
             width: 80%;
             max-width: 300px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.3s ease;
         }
         .application-item {
             margin: 5px 0;
             cursor: pointer;
             color: white;
-            transition: color 0.3s;
+            transition: all 0.3s;
             padding: 8px 12px;
             border-radius: 5px;
             text-decoration: none;
@@ -190,6 +256,40 @@
         .application-item:hover {
             color: yellow;
             background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px yellow;
+        }
+        .game {
+            margin: 5px 0;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .game:hover {
+            color: #00ff00;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px #00ff00;
+        }
+        p {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 20px;
+            font-style: italic;
+            opacity: 0.9;
+            transition: all 0.3s;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        p:hover {
+            opacity: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
