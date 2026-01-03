@@ -357,6 +357,15 @@
     </div>
 
     <script>
+        // دالة لإغلاق جميع القوائم المفتوحة
+        function closeAllLists() {
+            document.getElementById('games-list').style.display = 'none';
+            document.getElementById('applications-list').style.display = 'none';
+            document.getElementById('film-category').style.display = 'none';
+            document.getElementById('payment-barcode').style.display = 'none';
+            document.getElementById('vodafone-section').style.display = 'none';
+        }
+
         function toggleModal() {
             const modal = document.getElementById('notification-modal');
             const overlay = document.getElementById('modal-overlay');
@@ -391,7 +400,15 @@
 
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            gamesList.style.display = gamesList.style.display === "none" || gamesList.style.display === "" ? "block" : "none";
+            
+            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
+            if (gamesList.style.display === "block") {
+                gamesList.style.display = "none";
+            } else {
+                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
+                closeAllLists();
+                gamesList.style.display = "block";
+            }
         }
 
         function copyToClipboard(text) {
@@ -408,23 +425,42 @@
             const barcode = document.getElementById('payment-barcode');
             const vodafoneSection = document.getElementById('vodafone-section');
             
-            if (barcode.style.display === "none" || barcode.style.display === "") {
-                barcode.style.display = "block";
-                vodafoneSection.style.display = "block";
-            } else {
+            // إذا كان الباركود مفتوحًا بالفعل، أغلق كل شيء
+            if (barcode.style.display === "block") {
                 barcode.style.display = "none";
                 vodafoneSection.style.display = "none";
+            } else {
+                // إذا كان مغلقًا، أغلق كل القوائم الأخرى ثم افتح الباركود
+                closeAllLists();
+                barcode.style.display = "block";
+                vodafoneSection.style.display = "block";
             }
         }
 
         function toggleApplicationsList() {
             const applicationsList = document.getElementById('applications-list');
-            applicationsList.style.display = applicationsList.style.display === "none" || applicationsList.style.display === "" ? "block" : "none";
+            
+            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
+            if (applicationsList.style.display === "block") {
+                applicationsList.style.display = "none";
+            } else {
+                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
+                closeAllLists();
+                applicationsList.style.display = "block";
+            }
         }
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            filmCategory.style.display = filmCategory.style.display === "none" || filmCategory.style.display === "" ? "block" : "none";
+            
+            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
+            if (filmCategory.style.display === "block") {
+                filmCategory.style.display = "none";
+            } else {
+                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
+                closeAllLists();
+                filmCategory.style.display = "block";
+            }
         }
 
         function openLink(url) {
