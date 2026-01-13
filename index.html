@@ -353,6 +353,7 @@
             <a href="https://t.me/ibrahimmusttafa?startapp=true">Telegram</a>
             <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
             <a href="https://drive.google.com/file/d/1EtoOIX4KjNIbq3zlINt6fvPDJdm2vhwx/view?usp=sharing">CV</a>
+            <a href="#" onclick="requestPersonalInfoPassword()">Personal information</a>
         </div>
     </div>
 
@@ -393,6 +394,16 @@
             const correctPassword = '48522844';
             if (userPassword === correctPassword) {
                 window.location.href = 'https://api.whatsapp.com/send/?phone=201027714970&text&type=phone_number&app_absent=0';
+            } else {
+                alert("Incorrect password!");
+            }
+        }
+
+        function requestPersonalInfoPassword() {
+            const userPassword = prompt("Please enter your password to access Personal Information:");
+            const correctPassword = '485228445';
+            if (userPassword === correctPassword) {
+                window.location.href = 'https://drive.google.com/drive/folders/1lDH6hYyEWj3dq1b5DxQNr5v89y0hX6AZ?usp=sharing';
             } else {
                 alert("Incorrect password!");
             }
