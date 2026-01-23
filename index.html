@@ -143,12 +143,15 @@
         }
         .icons-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* تغيير من wrap إلى nowrap */
             justify-content: center;
             align-items: center;
             gap: 10px;
             margin: 20px auto;
-            max-width: 500px;
+            max-width: 100%; /* تغيير من 500px إلى 100% */
+            padding: 0 10px;
+            overflow-x: auto; /* إضافة شريط تمرير أفقي إذا لزم الأمر */
+            -webkit-overflow-scrolling: touch;
         }
         .games-icon,
         .payment-icon,
@@ -162,7 +165,7 @@
             filter: brightness(0) invert(1);
             transition: all 0.3s ease;
             transform: scale(1);
-            flex-shrink: 0;
+            flex-shrink: 0; /* منع الأيقونات من التقلص */
         }
         .games-icon:hover,
         .payment-icon:hover,
@@ -317,8 +320,9 @@
         /* استعلامات الوسائط للشاشات الصغيرة */
         @media (max-width: 500px) {
             .icons-container {
-                max-width: 350px;
-                gap: 15px;
+                gap: 8px;
+                justify-content: space-between; /* توزيع المساحة بين الأيقونات */
+                padding: 0 15px;
             }
             
             .games-icon,
@@ -333,8 +337,8 @@
 
         @media (max-width: 400px) {
             .icons-container {
-                max-width: 300px;
-                gap: 10px;
+                gap: 5px;
+                padding: 0 10px;
             }
             
             .games-icon,
@@ -349,8 +353,8 @@
 
         @media (max-width: 350px) {
             .icons-container {
-                max-width: 280px;
-                gap: 8px;
+                gap: 3px;
+                padding: 0 5px;
             }
             
             .games-icon,
