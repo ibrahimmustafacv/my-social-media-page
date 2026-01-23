@@ -141,6 +141,15 @@
             background-color: #f0f0f0;
             transform: scale(1.05);
         }
+        .icons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
         .games-icon,
         .payment-icon,
         .applications-icon,
@@ -149,11 +158,11 @@
             width: 70px;
             height: 70px;
             cursor: pointer;
-            margin: 20px 5px;
             display: inline-block;
             filter: brightness(0) invert(1);
             transition: all 0.3s ease;
             transform: scale(1);
+            flex-shrink: 0;
         }
         .games-icon:hover,
         .payment-icon:hover,
@@ -304,6 +313,55 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* استعلامات الوسائط للشاشات الصغيرة */
+        @media (max-width: 500px) {
+            .icons-container {
+                max-width: 350px;
+                gap: 15px;
+            }
+            
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .icons-container {
+                max-width: 300px;
+                gap: 10px;
+            }
+            
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .icons-container {
+                max-width: 280px;
+                gap: 8px;
+            }
+            
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -330,11 +388,14 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsList()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
-        <img src="My pictures.png" alt="My Pictures Icon" class="pictures-icon" onclick="togglePicturesList()">
+        <div class="icons-container">
+            <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
+            <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
+            <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsList()">
+            <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
+            <img src="My pictures.png" alt="My Pictures Icon" class="pictures-icon" onclick="togglePicturesList()">
+        </div>
+
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="vodafone-section" id="vodafone-section" onclick="callVodafoneCash()">
