@@ -141,23 +141,34 @@
             background-color: #f0f0f0;
             transform: scale(1.05);
         }
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 0 10px;
+        }
         .games-icon,
         .payment-icon,
         .applications-icon,
-        .movie-icon {
+        .movie-icon,
+        .pictures-icon {
             width: 70px;
             height: 70px;
             cursor: pointer;
-            margin: 20px 5px;
-            display: inline-block;
             filter: brightness(0) invert(1);
             transition: all 0.3s ease;
             transform: scale(1);
+            flex-shrink: 0;
         }
         .games-icon:hover,
         .payment-icon:hover,
         .applications-icon:hover,
-        .movie-icon:hover {
+        .movie-icon:hover,
+        .pictures-icon:hover {
             transform: scale(1.1) rotate(5deg);
             filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
         }
@@ -165,7 +176,8 @@
         .payment-modal,
         .movies-list,
         .film-category,
-        .vodafone-section {
+        .vodafone-section,
+        .pictures-list {
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
@@ -269,6 +281,20 @@
             transform: translateX(5px);
             text-shadow: 0 0 10px #00ff00;
         }
+        .picture-item {
+            margin: 5px 0;
+            cursor: pointer;
+            color: white;
+            transition: all 0.3s;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .picture-item:hover {
+            color: #ff69b4;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px #ff69b4;
+        }
         p {
             margin: 20px auto;
             max-width: 600px;
@@ -286,6 +312,50 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 500px) {
+            .icons-container {
+                gap: 8px;
+                max-width: 100%;
+            }
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .icons-container {
+                gap: 5px;
+            }
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 55px;
+                height: 55px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .icons-container {
+                gap: 4px;
+            }
+            .games-icon,
+            .payment-icon,
+            .applications-icon,
+            .movie-icon,
+            .pictures-icon {
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
@@ -313,10 +383,14 @@
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
 
-        <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
-        <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
-        <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsList()">
-        <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
+        <div class="icons-container">
+            <img src="games.png" alt="Games Icon" class="games-icon" onclick="toggleGamesList()">
+            <img src="money.png" alt="Money Icon" class="payment-icon" onclick="showBarcode()">
+            <img src="Applications.png" alt="Applications Icon" class="applications-icon" onclick="toggleApplicationsList()">
+            <img src="movie.png" alt="Movie Icon" class="movie-icon" onclick="toggleFilmCategories()">
+            <img src="My pictures.png" alt="My Pictures Icon" class="pictures-icon" onclick="togglePicturesList()">
+        </div>
+
         <img src="barcode.png" alt="Payment Barcode" class="barcode" id="payment-barcode">
 
         <div class="vodafone-section" id="vodafone-section" onclick="callVodafoneCash()">
@@ -336,6 +410,10 @@
 
         <div class="film-category" id="film-category">
             <div class="movie" onclick="openLink('https://ibrahimmustafacv.github.io/Welcome-to-my-library/')">My Cinematic World</div>
+        </div>
+
+        <div class="pictures-list" id="pictures-list">
+            <div class="picture-item" onclick="openLink('https://ibrahimmustafacv.github.io/My-personal-photos/')">My pictures</div>
         </div>
 
         <p>If you see beauty in me, know that there's beauty inside of you.</p>
@@ -362,6 +440,7 @@
             document.getElementById('games-list').style.display = 'none';
             document.getElementById('applications-list').style.display = 'none';
             document.getElementById('film-category').style.display = 'none';
+            document.getElementById('pictures-list').style.display = 'none';
             document.getElementById('payment-barcode').style.display = 'none';
             document.getElementById('vodafone-section').style.display = 'none';
         }
@@ -418,6 +497,19 @@
                 // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 gamesList.style.display = "block";
+            }
+        }
+
+        function togglePicturesList() {
+            const picturesList = document.getElementById('pictures-list');
+            
+            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
+            if (picturesList.style.display === "block") {
+                picturesList.style.display = "none";
+            } else {
+                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
+                closeAllLists();
+                picturesList.style.display = "block";
             }
         }
 
