@@ -143,29 +143,27 @@
         }
         .icons-container {
             display: flex;
-            flex-wrap: nowrap; /* تغيير من wrap إلى nowrap */
-            justify-content: center;
+            flex-wrap: nowrap;
+            justify-content: space-around; /* تغيير إلى space-around لتوزيع المسافة بالتساوي */
             align-items: center;
-            gap: 10px;
+            gap: 5px; /* تقليل الفجوة */
             margin: 20px auto;
-            max-width: 100%; /* تغيير من 500px إلى 100% */
+            max-width: 100%;
             padding: 0 10px;
-            overflow-x: auto; /* إضافة شريط تمرير أفقي إذا لزم الأمر */
-            -webkit-overflow-scrolling: touch;
         }
         .games-icon,
         .payment-icon,
         .applications-icon,
         .movie-icon,
         .pictures-icon {
-            width: 70px;
-            height: 70px;
+            width: 75px; /* زيادة 5px من 70px */
+            height: 75px; /* زيادة 5px من 70px */
             cursor: pointer;
             display: inline-block;
             filter: brightness(0) invert(1);
             transition: all 0.3s ease;
             transform: scale(1);
-            flex-shrink: 0; /* منع الأيقونات من التقلص */
+            flex-shrink: 0;
         }
         .games-icon:hover,
         .payment-icon:hover,
@@ -320,9 +318,8 @@
         /* استعلامات الوسائط للشاشات الصغيرة */
         @media (max-width: 500px) {
             .icons-container {
-                gap: 8px;
-                justify-content: space-between; /* توزيع المساحة بين الأيقونات */
-                padding: 0 15px;
+                gap: 4px;
+                padding: 0 8px;
             }
             
             .games-icon,
@@ -330,15 +327,15 @@
             .applications-icon,
             .movie-icon,
             .pictures-icon {
-                width: 60px;
-                height: 60px;
+                width: 65px; /* تكبير أكثر من 60px */
+                height: 65px; /* تكبير أكثر من 60px */
             }
         }
 
         @media (max-width: 400px) {
             .icons-container {
-                gap: 5px;
-                padding: 0 10px;
+                gap: 3px;
+                padding: 0 6px;
             }
             
             .games-icon,
@@ -346,15 +343,15 @@
             .applications-icon,
             .movie-icon,
             .pictures-icon {
-                width: 55px;
-                height: 55px;
+                width: 60px; /* تكبير أكثر من 55px */
+                height: 60px; /* تكبير أكثر من 55px */
             }
         }
 
         @media (max-width: 350px) {
             .icons-container {
-                gap: 3px;
-                padding: 0 5px;
+                gap: 2px;
+                padding: 0 4px;
             }
             
             .games-icon,
@@ -362,8 +359,8 @@
             .applications-icon,
             .movie-icon,
             .pictures-icon {
-                width: 50px;
-                height: 50px;
+                width: 55px; /* تكبير أكثر من 50px */
+                height: 55px; /* تكبير أكثر من 50px */
             }
         }
     </style>
