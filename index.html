@@ -107,6 +107,68 @@
             z-index: 2;
             backdrop-filter: blur(3px);
         }
+        /* نافذة CV المنبثقة */
+        .cv-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            min-width: 250px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .cv-modal h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .cv-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .cv-close:hover {
+            color: #ff5555;
+            transform: scale(1.2);
+        }
+        .cv-option {
+            background-color: rgba(255, 255, 255, 0.15);
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cv-option:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+            letter-spacing: 1px;
+            border-color: white;
+        }
+        .cv-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9;
+            backdrop-filter: blur(5px);
+        }
         .close-button {
             cursor: pointer;
             color: white;
@@ -318,6 +380,15 @@
         </div>
     </div>
 
+    <!-- نافذة CV المنبثقة -->
+    <div class="cv-overlay" id="cv-overlay" onclick="closeCVModal()"></div>
+    <div class="cv-modal" id="cv-modal">
+        <span class="cv-close" onclick="closeCVModal()">&times;</span>
+        <h3>Choose CV format</h3>
+        <div class="cv-option" onclick="openLink('https://drive.google.com/file/d/1tkw5p_2d_KWll1LP_huhwF0BiyZgbhsZ/view?usp=drive_link')">CV ATS</div>
+        <div class="cv-option" onclick="openLink('https://drive.google.com/file/d/1AyaZzG9G2ua02bg_79sN9hRE1se7ch2O/view?usp=drive_link')">CV optical</div>
+    </div>
+
     <div class="content">
         <img src="image.png" alt="Profile Picture" class="profile-pic">
         <div class="name">Ibrahim Mustafa</div>
@@ -364,7 +435,8 @@
             <a href="https://www.tiktok.com/@ibrahim.mustafa7">TikTok</a>
             <a href="https://t.me/ibrahimmusttafa?startapp=true">Telegram</a>
             <a href="https://open.spotify.com/playlist/5uz10SkIcyry9vJPv5EmTr?si=6zYxuT-kS76qrtLxQ7-vRQ">Spotify Playlist</a>
-            <a href="https://drive.google.com/file/d/1AyaZzG9G2ua02bg_79sN9hRE1se7ch2O/view?usp=sharing">CV</a>
+            <!-- تم تعديل رابط CV ليظهر النافذة المنبثقة بدلاً من الرابط المباشر -->
+            <a href="#" onclick="showCVModal(); return false;">CV</a>
             <a href="#" onclick="requestPersonalInfoPassword()">Personal information</a>
         </div>
     </div>
@@ -421,14 +493,22 @@
             }
         }
 
+        // وظائف النافذة المنبثقة لـ CV
+        function showCVModal() {
+            document.getElementById('cv-modal').style.display = 'block';
+            document.getElementById('cv-overlay').style.display = 'block';
+        }
+
+        function closeCVModal() {
+            document.getElementById('cv-modal').style.display = 'none';
+            document.getElementById('cv-overlay').style.display = 'none';
+        }
+
         function toggleGamesList() {
             const gamesList = document.getElementById('games-list');
-            
-            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
             if (gamesList.style.display === "block") {
                 gamesList.style.display = "none";
             } else {
-                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 gamesList.style.display = "block";
             }
@@ -436,12 +516,9 @@
 
         function togglePaymentList() {
             const paymentList = document.getElementById('payment-list');
-            
-            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
             if (paymentList.style.display === "block") {
                 paymentList.style.display = "none";
             } else {
-                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 paymentList.style.display = "block";
             }
@@ -449,12 +526,9 @@
 
         function togglePicturesList() {
             const picturesList = document.getElementById('pictures-list');
-            
-            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
             if (picturesList.style.display === "block") {
                 picturesList.style.display = "none";
             } else {
-                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 picturesList.style.display = "block";
             }
@@ -462,12 +536,9 @@
 
         function toggleApplicationsList() {
             const applicationsList = document.getElementById('applications-list');
-            
-            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
             if (applicationsList.style.display === "block") {
                 applicationsList.style.display = "none";
             } else {
-                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 applicationsList.style.display = "block";
             }
@@ -475,12 +546,9 @@
 
         function toggleFilmCategories() {
             const filmCategory = document.getElementById('film-category');
-            
-            // إذا كانت القائمة مفتوحة بالفعل، أغلقها
             if (filmCategory.style.display === "block") {
                 filmCategory.style.display = "none";
             } else {
-                // إذا كانت مغلقة، أغلق كل القوائم الأخرى ثم افتحها
                 closeAllLists();
                 filmCategory.style.display = "block";
             }
